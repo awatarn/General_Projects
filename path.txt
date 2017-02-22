@@ -1,0 +1,3 @@
+export export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/composer_xe_2013_sp1/lib/intel64
+
+http://stackoverflow.com/questions/20985272/problems-setting-environment-variables-for-intel-c-composer-gcc-not-found
