@@ -2,7 +2,8 @@
 ! Performs summations using in a loop using EXIT statement
 ! Saves input information and the summation in a data file
 
-program summation
+program summation 
+!
 implicit none
 integer :: sum, a
 
