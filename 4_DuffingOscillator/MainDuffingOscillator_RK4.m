@@ -10,11 +10,18 @@
 close all
 clear
 clc
+% return 
 %% INPUT PARAMETERS
+% alpha = -1;
+% beta  = 1;
+% delta = 0.3;
+% gamma = 0.5;
+% omega = 1.2;
+
 alpha = -1;
-beta  = 1;
+beta = 1;
 delta = 0.3;
-gamma = 0.8;
+gamma = 0.37;
 omega = 1.2;
 
 x0    = 1;
@@ -22,7 +29,7 @@ v0    = 0;
 
 dt    = 0.01; % TIME STEP FOR CALCULATION
 tmin  = 0;
-tmax  = 200;
+tmax  = 100;
 
 dtplot= 0.01; % TIME STEP FOR PLOTTING
 %% INITIALIZATION
