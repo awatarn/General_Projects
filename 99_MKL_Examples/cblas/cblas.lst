@@ -1,0 +1,27 @@
+#===============================================================================
+# Copyright 2005-2017 Intel Corporation All Rights Reserved.
+#
+# The source code,  information  and material  ("Material") contained  herein is
+# owned by Intel Corporation or its  suppliers or licensors,  and  title to such
+# Material remains with Intel  Corporation or its  suppliers or  licensors.  The
+# Material  contains  proprietary  information  of  Intel or  its suppliers  and
+# licensors.  The Material is protected by  worldwide copyright  laws and treaty
+# provisions.  No part  of  the  Material   may  be  used,  copied,  reproduced,
+# modified, published,  uploaded, posted, transmitted,  distributed or disclosed
+# in any way without Intel's prior express written permission.  No license under
+# any patent,  copyright or other  intellectual property rights  in the Material
+# is granted to  or  conferred  upon  you,  either   expressly,  by implication,
+# inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
+# property rights must be express and approved by Intel in writing.
+#
+# Unless otherwise agreed by Intel in writing,  you may not remove or alter this
+# notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
+# suppliers or licensors in any way.
+#===============================================================================
+
+CBLAS = \
+cblas_sasum cblas_saxpyi cblas_saxpy cblas_scasum cblas_scnrm2 cblas_scopy cblas_sdoti cblas_sdot cblas_sgemm cblas_sgemm_batch cblas_sgemm_compute cblas_sgemmt cblas_sgemv cblas_sger cblas_sgthr cblas_sgthrz cblas_snrm2 cblas_srotg cblas_sroti cblas_srotmg cblas_srotm cblas_srot cblas_sscal cblas_ssctr cblas_sspmv cblas_sspr2 cblas_sspr cblas_sswap cblas_ssymm cblas_ssymv cblas_ssyr2k cblas_ssyr2 cblas_ssyrk cblas_ssyr cblas_stpmv cblas_stpsv cblas_strmm cblas_strmv cblas_strsm cblas_strsv cblas_dgbmv cblas_dsbmv cblas_dtbmv cblas_dtbsv \
+cblas_dasum cblas_daxpyi cblas_daxpy cblas_dcopy cblas_ddoti cblas_ddot cblas_dgemm cblas_dgemm_batch cblas_dgemm_compute cblas_dgemmt cblas_dgemv cblas_dger cblas_dgthr cblas_dgthrz cblas_dnrm2 cblas_drotg cblas_droti cblas_drotmg cblas_drotm cblas_drot cblas_dscal cblas_dsctr cblas_dspmv cblas_dspr2 cblas_dspr cblas_dswap cblas_dsymm cblas_dsymv cblas_dsyr2k cblas_dsyr2 cblas_dsyrk cblas_dsyr cblas_dtpmv cblas_dtpsv cblas_dtrmm cblas_dtrmv cblas_dtrsm cblas_dtrsv cblas_dzasum cblas_dznrm2 cblas_cgbmv cblas_chbmv cblas_ctbmv cblas_ctbsv \
+cblas_caxpyi cblas_caxpy cblas_ccopy cblas_cdotci_sub cblas_cdotc_sub cblas_cdotui_sub cblas_cdotu_sub cblas_cgemm cblas_cgemm_batch cblas_cgemmt cblas_cgemv cblas_cgerc cblas_cgeru cblas_cgthr cblas_cgthrz cblas_chemm cblas_chemv cblas_cher2k cblas_cher2 cblas_cherk cblas_cher cblas_chpmv cblas_chpr2 cblas_chpr cblas_crotg cblas_cscal cblas_csctr cblas_csrot cblas_csscal cblas_cswap cblas_csymm cblas_csyr2k cblas_csyrk cblas_ctpmv cblas_ctpsv cblas_ctrmm cblas_ctrmv cblas_ctrsm cblas_ctrsv cblas_sgbmv cblas_ssbmv cblas_stbmv cblas_stbsv cblas_cgemm3m cblas_cgemm3m_batch \
+cblas_zaxpyi cblas_zaxpy cblas_zcopy cblas_zdotci_sub cblas_zdotc_sub cblas_zdotui_sub cblas_zdotu_sub cblas_zdrot cblas_zdscal cblas_zgemm cblas_zgemm_batch cblas_zgemmt cblas_zgemv cblas_zgerc cblas_zgeru cblas_zgthr cblas_zgthrz cblas_zhemm cblas_zhemv cblas_zher2k cblas_zher2 cblas_zherk cblas_zher cblas_zhpmv cblas_zhpr2 cblas_zhpr cblas_zrotg cblas_zscal cblas_zsctr cblas_zswap cblas_zsymm cblas_zsyr2k cblas_zsyrk cblas_ztpmv cblas_ztpsv cblas_ztrmm cblas_ztrmv cblas_ztrsm cblas_ztrsv cblas_zgbmv cblas_zhbmv cblas_ztbmv cblas_ztbsv cblas_zgemm3m  cblas_zgemm3m_batch \
+cblas_icamax cblas_icamin cblas_idamax cblas_idamin cblas_isamax cblas_isamin cblas_izamax cblas_izamin cblas_caxpby cblas_daxpby cblas_saxpby cblas_zaxpby

@@ -1,0 +1,40 @@
+#===============================================================================
+# Copyright 2006-2017 Intel Corporation All Rights Reserved.
+#
+# The source code,  information  and material  ("Material") contained  herein is
+# owned by Intel Corporation or its  suppliers or licensors,  and  title to such
+# Material remains with Intel  Corporation or its  suppliers or  licensors.  The
+# Material  contains  proprietary  information  of  Intel or  its suppliers  and
+# licensors.  The Material is protected by  worldwide copyright  laws and treaty
+# provisions.  No part  of  the  Material   may  be  used,  copied,  reproduced,
+# modified, published,  uploaded, posted, transmitted,  distributed or disclosed
+# in any way without Intel's prior express written permission.  No license under
+# any patent,  copyright or other  intellectual property rights  in the Material
+# is granted to  or  conferred  upon  you,  either   expressly,  by implication,
+# inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
+# property rights must be express and approved by Intel in writing.
+#
+# Unless otherwise agreed by Intel in writing,  you may not remove or alter this
+# notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
+# suppliers or licensors in any way.
+#===============================================================================
+
+PDE_POISSON_C = \
+d_Helmholtz_2D_c \
+d_Helmholtz_3D_c \
+d_Laplace_2D_c \
+d_Laplace_3D_c \
+d_Poisson_2D_c \
+d_Poisson_3D_c \
+s_Helmholtz_2D_c \
+s_Helmholtz_3D_c \
+s_Laplace_2D_c \
+s_Laplace_3D_c \
+s_Poisson_2D_c \
+s_Poisson_3D_c \
+d_sph_with_poles_c \
+d_sph_without_poles_p_c \
+s_sph_without_poles_np_c \
+d_sph_without_poles_np_c \
+s_sph_with_poles_c \
+s_sph_without_poles_p_c

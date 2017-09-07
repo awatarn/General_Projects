@@ -1,0 +1,28 @@
+#===============================================================================
+# Copyright 2010-2017 Intel Corporation All Rights Reserved.
+#
+# The source code,  information  and material  ("Material") contained  herein is
+# owned by Intel Corporation or its  suppliers or licensors,  and  title to such
+# Material remains with Intel  Corporation or its  suppliers or  licensors.  The
+# Material  contains  proprietary  information  of  Intel or  its suppliers  and
+# licensors.  The Material is protected by  worldwide copyright  laws and treaty
+# provisions.  No part  of  the  Material   may  be  used,  copied,  reproduced,
+# modified, published,  uploaded, posted, transmitted,  distributed or disclosed
+# in any way without Intel's prior express written permission.  No license under
+# any patent,  copyright or other  intellectual property rights  in the Material
+# is granted to  or  conferred  upon  you,  either   expressly,  by implication,
+# inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
+# property rights must be express and approved by Intel in writing.
+#
+# Unless otherwise agreed by Intel in writing,  you may not remove or alter this
+# notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
+# suppliers or licensors in any way.
+#===============================================================================
+
+SOLVER_1 = dss_sym_c dss_unsym_c pardiso_sym_c pardiso_unsym_c pardiso_unsym_complex_c pardiso_sym_getdiag_c pardiso_sym_0_based pardiso_sym_reduced_solve_c pardiso_sym_diag_pivot_c pardiso_nonlinear nonuniform_heat pardiso_unsym_diag_pivot_c pardiso_handle_store_restore_c pardiso_schur_c pardiso_sym_bsr_c
+SOLVER_2 = cg_jacobi_precon_c cg_no_precon_c cg_ssor_precon_c cg_st_criteria_c matrix_check
+SOLVER_3 = fgmres_full_funct_c fgmres_no_precon_c fgmres_st_criterion_c
+SOLVER_4 = ex_nlsqp_bc_c ex_nlsqp_c ex_nlsqp_bc_c_x ex_nlsqp_c_x ex_snlsqp_bc_c ex_snlsqp_c ex_snlsqp_bc_c_x ex_snlsqp_c_x
+SOLVER_5 = dcsrilu0_exampl1 dcsrilut_exampl1 djacobi_rci_c sjacobi_rci_c cg_mrhs_c cg_mrhs_precond_c cg_mrhs_stop_crt_c
+
+SOLVER = $(SOLVER_1) $(SOLVER_2) $(SOLVER_3) $(SOLVER_4) $(SOLVER_5)

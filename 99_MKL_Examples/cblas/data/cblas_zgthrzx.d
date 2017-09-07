@@ -1,0 +1,4 @@
+:  C B L A S _ Z G T H R Z  EXAMPLE PROGRAM DATA
+4           :Values of N
+1  0  3  2  :Values of vector INDX 
+(1.1, 2.8)  (2.9,-3.2)  (3.8, 4.4)  (4.3, 0.0)    :Values of vector Y

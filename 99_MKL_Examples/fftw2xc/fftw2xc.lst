@@ -1,0 +1,38 @@
+#===============================================================================
+# Copyright 2006-2017 Intel Corporation All Rights Reserved.
+#
+# The source code,  information  and material  ("Material") contained  herein is
+# owned by Intel Corporation or its  suppliers or licensors,  and  title to such
+# Material remains with Intel  Corporation or its  suppliers or  licensors.  The
+# Material  contains  proprietary  information  of  Intel or  its suppliers  and
+# licensors.  The Material is protected by  worldwide copyright  laws and treaty
+# provisions.  No part  of  the  Material   may  be  used,  copied,  reproduced,
+# modified, published,  uploaded, posted, transmitted,  distributed or disclosed
+# in any way without Intel's prior express written permission.  No license under
+# any patent,  copyright or other  intellectual property rights  in the Material
+# is granted to  or  conferred  upon  you,  either   expressly,  by implication,
+# inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
+# property rights must be express and approved by Intel in writing.
+#
+# Unless otherwise agreed by Intel in writing,  you may not remove or alter this
+# notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
+# suppliers or licensors in any way.
+#===============================================================================
+
+DFT = \
+real_1d_ex1 real_1d_ex2 real_1d_ex4 real_1d_ex6 real_1d_ex7 real_1d_ex8 \
+real_2d_ex2 real_2d_ex4 real_2d_ex6 real_2d_ex8 real_2d_ex10 real_2d_ex12 \
+real_3d_ex2 real_3d_ex4 real_3d_ex6 real_3d_ex8 real_3d_ex10 real_3d_ex12 \
+real_2d_ex1 real_2d_ex3 real_2d_ex5 real_2d_ex7 \
+real_3d_ex1 real_3d_ex3 real_3d_ex5 real_3d_ex7 \
+\
+complex_1d_ex1 complex_1d_ex2 complex_1d_ex3 complex_1d_ex4 complex_1d_ex5 \
+complex_1d_ex6 complex_1d_ex7 complex_1d_ex8 complex_1d_ex9 complex_1d_ex11 \
+\
+complex_2d_ex1 complex_2d_ex2 complex_2d_ex3 complex_2d_ex4 complex_2d_ex5 \
+complex_2d_ex6 complex_2d_ex7 complex_2d_ex8 complex_2d_ex9 complex_2d_ex10 \
+complex_2d_ex11 complex_2d_ex12 complex_2d_ex13 complex_2d_ex15 \
+\
+complex_3d_ex1 complex_3d_ex2 complex_3d_ex3 complex_3d_ex4 complex_3d_ex5 \
+complex_3d_ex6 complex_3d_ex7 complex_3d_ex8 complex_3d_ex9 complex_3d_ex10 \
+complex_3d_ex11 complex_3d_ex12 complex_3d_ex13 complex_3d_ex15

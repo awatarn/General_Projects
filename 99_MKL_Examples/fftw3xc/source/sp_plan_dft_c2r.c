@@ -1,0 +1,192 @@
+/*******************************************************************************
+* Copyright 2011-2017 Intel Corporation All Rights Reserved.
+*
+* The source code,  information  and material  ("Material") contained  herein is
+* owned by Intel Corporation or its  suppliers or licensors,  and  title to such
+* Material remains with Intel  Corporation or its  suppliers or  licensors.  The
+* Material  contains  proprietary  information  of  Intel or  its suppliers  and
+* licensors.  The Material is protected by  worldwide copyright  laws and treaty
+* provisions.  No part  of  the  Material   may  be  used,  copied,  reproduced,
+* modified, published,  uploaded, posted, transmitted,  distributed or disclosed
+* in any way without Intel's prior express written permission.  No license under
+* any patent,  copyright or other  intellectual property rights  in the Material
+* is granted to  or  conferred  upon  you,  either   expressly,  by implication,
+* inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
+* property rights must be express and approved by Intel in writing.
+*
+* Unless otherwise agreed by Intel in writing,  you may not remove or alter this
+* notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
+* suppliers or licensors in any way.
+*******************************************************************************/
+
+/*
+! Content:
+!       Example of using fftwf_plan_dft_c2r function.
+!
+!****************************************************************************/
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <float.h>
+#include "fftw3.h"
+
+static void init_c(fftwf_complex *x, int *N, int *H);
+static int verify_r(float *x, int *N, int *H);
+
+int main(void)
+{
+    /* Sizes of 4D transform */
+    int N[4] = {18, 6, 6, 4};
+
+    /* Arbitrary harmonic used to verify FFT */
+    int H[4] = {-2, -3, -4, -5};
+
+    /* FFTW plan handle */
+    fftwf_plan c2r = 0;
+
+    /* Pointer to input/output data */
+    fftwf_complex *x = 0;
+
+    /* Execution status */
+    int status = 0;
+
+
+    printf("Example sp_plan_dft_c2r\n");
+    printf("4D complex-to-real in-place transform\n");
+    printf("Configuration parameters:\n");
+    printf(" N = {%d, %d, %d, %d}\n", N[0], N[1], N[2], N[3]);
+    printf(" H = {%d, %d, %d, %d}\n", H[0], H[1], H[2], H[3]);
+
+    printf("Allocate complex data array x(%i)\n",N[0]*N[1]*N[2]*(N[3]/2+1));
+    x  = fftwf_malloc(sizeof(fftwf_complex)*N[0]*N[1]*N[2]*(N[3]/2+1));
+    if (0 == x) goto failed;
+
+    printf("Create FFTW plan for 4D c2r inplace FFT\n");
+    c2r = fftwf_plan_dft_c2r(4, N, x, (float*)x, FFTW_ESTIMATE);
+    if (0 == c2r) goto failed;
+
+    printf("Initialize input for c2r transform\n");
+    init_c(x, N, H);
+
+    printf("Compute c2r FFT\n");
+    fftwf_execute(c2r);
+
+    printf("Verify the result of c2r FFT\n");
+    status = verify_r((float*)x, N, H);
+    if (0 != status) goto failed;
+
+ cleanup:
+
+    printf("Destroy FFTW plan\n");
+    fftwf_destroy_plan(c2r);
+
+    printf("Free data array\n");
+    fftwf_free(x);
+
+    printf("TEST %s\n",0==status ? "PASSED" : "FAILED");
+    return status;
+
+ failed:
+    printf(" ERROR\n");
+    status = 1;
+    goto cleanup;
+}
+
+/* Compute (K*L)%M accurately */
+static float moda(int K, int L, int M)
+{
+    return (float)(((long long)K * L) % M);
+}
+
+/* Initialize array x(N) to produce unit peaks at x(H) */
+static void init_c(fftwf_complex *x, int *N, int *H)
+{
+    float TWOPI = 6.2831853071795864769f, phase;
+    int n1, n2, n3, n4, S1, S2, S3, S4, index;
+
+    /* Generalized strides for row-major addressing of x */
+    S4 = 1;
+    S3 = (N[3]/2+1);
+    S2 = N[2]*S3;
+    S1 = N[1]*S2;
+
+    for (n1 = 0; n1 < N[0]; n1++)
+    {
+        for (n2 = 0; n2 < N[1]; n2++)
+        {
+            for (n3 = 0; n3 < N[2]; n3++)
+            {
+                for (n4 = 0; n4 < N[3]/2+1; n4++)
+                {
+                    phase  = moda(n1,H[0],N[0]) / N[0];
+                    phase += moda(n2,H[1],N[1]) / N[1];
+                    phase += moda(n3,H[2],N[2]) / N[2];
+                    phase += moda(n4,H[3],N[3]) / N[3];
+                    index = n1*S1 + n2*S2 + n3*S3 + n4*S4;
+                    x[index][0] =  cosf( TWOPI * phase ) / (N[0]*N[1]*N[2]*N[3]);
+                    x[index][1] = -sinf( TWOPI * phase ) / (N[0]*N[1]*N[2]*N[3]);
+                }
+            }
+        }
+    }
+}
+
+/* Verify that x has unit peak at H */
+static int verify_r(float *x, int *N, int *H)
+{
+    float err, errthr, maxerr;
+    int n1, n2, n3, n4, S1, S2, S3, S4, index;
+
+    /* Generalized strides for row-major addressing of x */
+    S4 = 1;
+    S3 = 2*(N[3]/2+1);
+    S2 = N[2]*S3;
+    S1 = N[1]*S2;
+
+    /*
+     * Note, this simple error bound doesn't take into account error of
+     * input data
+     */
+    errthr = 2.5f * logf( (float)N[0]*N[1]*N[2]*N[3] ) / logf(2.0f) * FLT_EPSILON;
+    printf(" Check if err is below errthr %.3g\n", errthr);
+
+    maxerr = 0;
+    for (n1 = 0; n1 < N[0]; n1++)
+    {
+        for (n2 = 0; n2 < N[1]; n2++)
+        {
+            for (n3 = 0; n3 < N[2]; n3++)
+            {
+                for (n4 = 0; n4 < N[3]; n4++)
+                {
+                    float re_exp = 0.0, re_got;
+
+                    if ((n1-H[0])%N[0]==0 &&
+                        (n2-H[1])%N[1]==0 &&
+                        (n3-H[2])%N[2]==0 &&
+                        (n4-H[3])%N[3]==0)
+                    {
+                        re_exp = 1;
+                    }
+
+                    index = n1*S1 + n2*S2 + n3*S3 + n4*S4;
+                    re_got = x[index];
+                    err  = fabsf(re_got - re_exp);
+                    if (err > maxerr) maxerr = err;
+                    if (!(err < errthr))
+                    {
+                        printf(" x[%i][%i][%i][%i]: ",n1,n2,n3,n4);
+                        printf(" expected %.7g, ",re_exp);
+                        printf(" got %.7g, ",re_got);
+                        printf(" err %.3g\n", err);
+                        printf(" Verification FAILED\n");
+                        return 1;
+                    }
+                }
+            }
+        }
+    }
+    printf(" Verified,  maximum error was %.3g\n", maxerr);
+    return 0;
+}
