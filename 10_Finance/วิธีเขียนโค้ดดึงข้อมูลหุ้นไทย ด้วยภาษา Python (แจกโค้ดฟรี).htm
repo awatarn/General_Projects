@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://www.patanasongsivilai.com/blog/stock-thai-python/ -->
+<html lang="th"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="pingback" href="http://www.patanasongsivilai.com/blog/xmlrpc.php">
+	<title>วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)</title>
+<link rel="dns-prefetch" href="http://connect.facebook.net/">
+<link rel="dns-prefetch" href="http://connect.facebook.net/">
+<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="นักเขียนไส้แห้งกากๆ Blog » ฟีด" href="http://www.patanasongsivilai.com/blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="นักเขียนไส้แห้งกากๆ Blog » ฟีดความเห็น" href="http://www.patanasongsivilai.com/blog/comments/feed/">
+<meta name="description" content="บทความนี้จะกล่าวถึง ตัวอย่างเขียนภาษา Python 3...">
+<link rel="alternate" type="application/rss+xml" title="นักเขียนไส้แห้งกากๆ Blog » วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี) ฟีดความเห็น" href="http://www.patanasongsivilai.com/blog/stock-thai-python/feed/">
+<meta name="keywords" content="หุ้น, Python">
+<meta name="robots" content="index,follow,noodp,noydir">
+<link rel="canonical" href="http://www.patanasongsivilai.com/blog/stock-thai-python/">
+		<script id="facebook-jssdk" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/all.js"></script><script async="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.patanasongsivilai.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b!==c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="bootstrap-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/bootstrap.css" type="text/css" media="all">
+<link rel="stylesheet" id="font-awesome-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/font-awesome.css" type="text/css" media="all">
+<link rel="stylesheet" id="owl-carousel-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/owl.carousel.css" type="text/css" media="all">
+<link rel="stylesheet" id="owl-theme-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/owl.theme.css" type="text/css" media="all">
+<link rel="stylesheet" id="animate-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/animate.css" type="text/css" media="all">
+<link rel="stylesheet" id="education-one-custom-styles-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="education-one-style-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="education-one-google-fonts-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="easy_table_style-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/style(2).css" type="text/css" media="all">
+<link rel="stylesheet" id="simple-pagination-css-css" href="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/default.css" type="text/css" media="screen">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.2.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	var disableStr = 'ga-disable-UA-51405556-1';
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-51405556-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","is_debug_mode":"false","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"","home_url":"http:\/\/www.patanasongsivilai.com\/blog","track_download_as":"event","internal_label":"int","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/frontend.min.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/jquery.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/wonderpluginsliderskins.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/wonderpluginslider.js"></script>
+<link rel="https://api.w.org/" href="http://www.patanasongsivilai.com/blog/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.patanasongsivilai.com/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.patanasongsivilai.com/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="ตัวอย่างใช้ AI เนรมิตรูปภาพ" href="http://www.patanasongsivilai.com/blog/ai-generate-image/">
+<link rel="next" title="ขายของออนไลน์" href="http://www.patanasongsivilai.com/blog/%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%ad%e0%b8%ad%e0%b8%99%e0%b9%84%e0%b8%a5%e0%b8%99%e0%b9%8c/">
+<meta name="generator" content="WordPress 4.8.3">
+<link rel="shortlink" href="http://www.patanasongsivilai.com/blog/?p=7267">
+<link rel="alternate" type="application/json+oembed" href="http://www.patanasongsivilai.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.patanasongsivilai.com%2Fblog%2Fstock-thai-python%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://www.patanasongsivilai.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.patanasongsivilai.com%2Fblog%2Fstock-thai-python%2F&amp;format=xml">
+ 	<style type="text/css">
+
+			.page-header{
+
+				background: #151D30 url('')!important;
+				background-size: cover!important;
+				
+				}
+
+
+ 	</style>
+
+ 	<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style><meta property="og:site_name" content="นักเขียนไส้แห้งกากๆ Blog">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="th_TH">
+<meta property="fb:app_id" content="678396962215712">
+<meta property="og:url" content="http://www.patanasongsivilai.com/blog/stock-thai-python/">
+<meta property="og:title" content="วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)">
+<meta property="og:description" content="บทความนี้จะกล่าวถึง ตัวอย่างเขียนภาษา Python 3 เพื่อดึง…">
+<meta property="og:image" content="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled.png">
+<meta property="og:image:width" content="499">
+<meta property="og:image:height" content="243">
+<meta property="og:image" content="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-1.png">
+<meta property="og:image:width" content="475">
+<meta property="og:image:height" content="216">
+<meta property="og:image" content="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-2.png">
+<meta property="og:image:width" content="546">
+<meta property="og:image:height" content="484">
+<meta property="article:published_time" content="2017-06-18T11:17:53+00:00">
+<meta property="article:modified_time" content="2017-08-01T14:40:19+00:00">
+<meta property="article:author" content="http://www.patanasongsivilai.com/blog/author/">
+<meta property="article:section" content="AI/Machine Learning">
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:13px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:26px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:16px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:14px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:14px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:18px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100%;overflow:hidden;position:fixed;width:100%}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}</style></head>
+<body id="home" data-spy="scroll" data-target="#onepage-nav" class="post-template-default single single-post postid-7267 single-format-standard">
+
+<!--============================
+=            Header            =
+* Make header class="light" for light header
+* Make header class="dark" for dark header
+* Make header class="custom" for custom header
+=============================-->
+
+<header class="custom">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<!-- Navbar -->
+				<div class="navbar navbar-default" role="navigation">
+				  <div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				      <span class="sr-only">Toggle navigation</span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				      <span class="icon-bar"></span>
+				    </button>
+				                             <h1 class="site-title"><a href="http://www.patanasongsivilai.com/blog/" rel="home">นักเขียนไส้แห้งกากๆ Blog</a></h1>
+                    
+                    
+                                            <p class="site-description">อะไรเอ่ย อร่อย</p>
+                    				  </div>
+				  <div id="onepage-nav" class="navbar-collapse collapse">
+				  				   
+				                                <div class="menu-pata-menu-container"><ul id="menu-pata-menu" class="nav navbar-nav navbar-right sm" data-smartmenus-id="15119673677797793"><li id="menu-item-498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-498 dropdown"><a title="Archives" href="http://www.patanasongsivilai.com/blog/%e0%b8%84%e0%b8%a5%e0%b8%b1%e0%b8%87%e0%b8%9a%e0%b8%97%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1/" class="has-submenu" id="sm-15119673677797793-1" aria-haspopup="true" aria-controls="sm-15119673677797793-2" aria-expanded="false">Archives <span class="caret"></span></a>
+<ul role="group" class=" dropdown-menu" id="sm-15119673677797793-2" aria-hidden="true" aria-labelledby="sm-15119673677797793-1" aria-expanded="false">
+	<li id="menu-item-594" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-594"><a title="Sort by Categories" href="http://www.patanasongsivilai.com/blog/%e0%b9%80%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%87%e0%b8%95%e0%b8%b2%e0%b8%a1%e0%b8%ab%e0%b8%a1%e0%b8%a7%e0%b8%94%e0%b8%ab%e0%b8%a1%e0%b8%b9%e0%b9%88/">Sort by Categories</a></li>
+	<li id="menu-item-593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-593"><a title="Sort by Dates" href="http://www.patanasongsivilai.com/blog/%e0%b9%80%e0%b8%a3%e0%b8%b5%e0%b8%a2%e0%b8%87%e0%b8%95%e0%b8%b2%e0%b8%a1%e0%b8%a7%e0%b8%b1%e0%b8%99%e0%b8%97%e0%b8%b5%e0%b9%88/">Sort by Dates</a></li>
+</ul>
+</li>
+<li id="menu-item-634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-634"><a title="HOME" href="http://www.patanasongsivilai.com/blog/">HOME</a></li>
+<li id="menu-item-413" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-413 dropdown"><a title="Shop" href="http://www.patanasongsivilai.com/blog/%e0%b8%ab%e0%b8%99%e0%b9%89%e0%b8%b2%e0%b8%a3%e0%b9%89%e0%b8%b2%e0%b8%99/" class="has-submenu" id="sm-15119673677797793-3" aria-haspopup="true" aria-controls="sm-15119673677797793-4" aria-expanded="false">Shop <span class="caret"></span></a>
+<ul role="group" class=" dropdown-menu" id="sm-15119673677797793-4" aria-hidden="true" aria-labelledby="sm-15119673677797793-3" aria-expanded="false">
+	<li id="menu-item-150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-150"><a title="On LnwShop" target="_blank" href="http://www.patanasongsivilai.com/patana/healthshop.html">On LnwShop</a></li>
+</ul>
+</li>
+<li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a title="About" href="http://www.patanasongsivilai.com/blog/about/">About</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a title="Sitemap" href="http://www.patanasongsivilai.com/blog/sitemap/">Sitemap</a></li>
+</ul></div>                       
+                        <!-- end of navbar-collapse -->
+                     				  </div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs" itemprop="breadcrumb"><ul class="trail-items" itemscope="" itemtype="http://schema.org/BreadcrumbList"><meta name="numberOfItems" content="3"><meta name="itemListOrder" content="Ascending"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item trail-begin"><a href="http://www.patanasongsivilai.com/blog" rel="home"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item"><a href="http://www.patanasongsivilai.com/blog/category/aimachine-learning/"><span itemprop="name">AI/Machine Learning</span></a><meta itemprop="position" content="2"></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="trail-item trail-end"><span itemprop="name">วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)</span><meta itemprop="position" content="3"></li></ul></nav>			</div>
+			<div class="col-md-12">
+				<div class="page-title">
+					<h1>
+						วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<!--Category List-->
+<section class="section category-page">
+	<div class="container">
+		<div class="row">
+			<!--Main Content Bar-->
+			<div class="contentbar-section">
+			 			  
+			           
+				  
+				<div class="col-md-9">
+					<!--Article List-->
+					                     			<div id="post-7267" class="article-wrapper post-7267 post type-post status-publish format-standard hentry category-aimachine-learning">
+			
+						<!--The title of the article <div class="article-wrapper">-->
+						<h1 class="article-title">
+							วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)						</h1>
+						<ul class="article_meta">
+							<li><a href="http://www.patanasongsivilai.com/blog/2017/06/18/" title=""><i class="fa fa-calendar"></i> 18 มิถุนายน 2017</a></li>
+							<li><a href="http://www.patanasongsivilai.com/blog/author/"><i class="fa fa-user"></i>  &nbsp;แอดมินโฮ โอน้อยออก</a></li>
+							 <li><i class="fa fa-folder-open"></i> <a href="http://www.patanasongsivilai.com/blog/category/aimachine-learning/" rel="category tag">AI/Machine Learning</a></li>
+        												<li><a href="http://www.patanasongsivilai.com/blog/stock-thai-python/"><i class="fa fa-comments-o"></i> &nbsp; </a><a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comments">6 comments</a></li>
+  
+							
+						</ul>
+
+						<!--Image Section-->
+						
+						<!--content-->
+						<div class="text-content">
+							<p>บทความนี้จะกล่าวถึง ตัวอย่างเขียนภาษา <strong>Python 3</strong> เพื่อดึงข้อมูลจาก<strong>ตลาดหุ้นไทย</strong> ซึ่งมีหลากหลายวิธีดังนี้</p>
+<p>(ผู้เขียนสรุปค่อนข้างสั้น ดังนั้นควรมีพื้นฐาน python จะดีมาก)</p>
+<p>&nbsp;</p>
+<p><strong>คำเตือน</strong></p>
+<ul>
+<li>ถ้าเปิดบนถือ อาจเห็นโค้ดเพี้ยนได้ แนะนำให้เปิดบนคอมดีกว่า</li>
+<li>ถ้าจะลง Python เพื่อรันโค้ดตัวอย่าง ให้ติดตั้ง&nbsp;<a href="https://www.continuum.io/downloads" target="_blank" rel="noopener">Anaconda&nbsp;</a>&nbsp;ดีกว่า (มันจะติดตั้งทั้งคอมไพลเลอร์ มอดูล แพ็กเก็จ &nbsp;IDE, IPython และอื่นๆ ที่จำเป็นสำหรับเขียน Python ให้เสร็จสรรพ)</li>
+</ul>
+<p>&nbsp;</p>
+<p><span id="more-7267"></span></p>
+<h3><strong>วิธีที่ 1 ใช้โมดูล googlefinance</strong></h3>
+<p>&nbsp;</p>
+<p>ติดตั้งโมดูลด้วยคำสั่ง</p>
+<pre>pip install googlefinance</pre>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ด&nbsp;ดูข้อมูลหุ้น PTT</p>
+<pre>from googlefinance import getQuotes
+import json
+symbol = 'PTT'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print(json.dumps(getQuotes('SET:' + symbol), indent=2))</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<pre>[
+ {
+ "ID": "1079066631482057",
+ "StockSymbol": "PTT",
+ "Index": "BKK",
+ "LastTradePrice": "382.00",
+ "LastTradeWithCurrency": "THB382.00",
+ "LastTradeTime": "12:29PM GMT+7",
+ "LastTradeDateTime": "2017-06-19T12:29:33Z",
+ "LastTradeDateTimeLong": "Jun 19, 12:29PM GMT+7"
+ }
+]</pre>
+<p><strong>หมายเหตุ</strong> ชื่อย่อหุ้นไทยจะมีชื่อ “SET:” นำหน้าชื่อย่อหุ้นนั้นๆ&nbsp;(ค่าอาร์กิวเมนต์ตอนเรียกใช้ฟังก์ชั่น getQuotes())</p>
+<p>เช่น “SET:PTT”, “SET:AOT”, “SET:SCC” หรือถ้าจะดู SET ก็ระบุไปว่า “SET:SET”</p>
+<p>&nbsp;</p>
+<p><strong>อ่านเพิ่ม</strong> &nbsp;<a href="https://pypi.python.org/pypi/googlefinance" target="_blank" rel="noopener">https://pypi.python.org/pypi/googlefinance</a></p>
+<p>&nbsp;</p>
+<h3><strong>วิธีที่ 2 ใช้โมดูล quandl</strong></h3>
+<p>&nbsp;</p>
+<p>ติดตั้งโมดูลด้วยคำสั่ง</p>
+<pre>pip install quandl</pre>
+<p>&nbsp;</p>
+<p>ไปที่เว็บ <a href="https://www.quandl.com/" target="_blank" rel="noopener">https://www.quandl.com/</a> แล้วสมัครเป็นสมาชิกเพื่อขอ API KEY &nbsp;แล้วจะมีเมลส่งมาให้เรายืนยัน</p>
+<p>&nbsp;</p>
+<p>หลังจากกดยืนยันเสร็จ เมื่อไปที่หน้า <a href="https://www.quandl.com/account/api" target="_blank" rel="noopener">https://www.quandl.com/account/api</a> ก็จะมีหน้าบอก API KEY ว่าของเราคืออะไร ดังรูปข้างล่าง</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7268" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Untitled.png" alt="" width="499" height="243" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled.png 499w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-300x146.png 300w" sizes="(max-width: 499px) 100vw, 499px"></p>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ด</p>
+<pre>import quandl
+quandl.ApiConfig.api_key = 'YOUR_API_KEY'
+data = quandl.get("THAISE/INDEX")
+print(data.head())</pre>
+<p>ในโค้ดข้างบนจะเห็นชื่อตัวแปร <strong>quandl.ApiConfig.api_key</strong> ก็ให้ใส่ API KEY ที่เราได้มาลงไป</p>
+<p>&nbsp;</p>
+<p>ผลลัพธ์ที่ได้</p>
+<pre>            Value
+Date 
+2009-12-31 734.54
+2010-12-31 1032.76
+2011-12-31 1025.32
+2012-12-31 1391.93
+2013-12-31 1298.71</pre>
+<p>&nbsp;</p>
+<p>แต่น่าเสียดายข้อมูลมีเฉพาะดัชนี SET อย่างเดียว ข้อมูลเฉพาะหุ้นรายตัวของไทยไม่มี &nbsp;(หรือมีเปล่าหว้า ถ้าใครรู้ช่วยบอกที)</p>
+<p>&nbsp;</p>
+<p><strong>อ่านเพิ่ม</strong></p>
+<ul>
+<li><a href="https://github.com/quandl/quandl-python" target="_blank" rel="noopener">https://github.com/quandl/quandl-python</a></li>
+<li><a href="https://docs.quandl.com/docs/installation-1" target="_blank" rel="noopener" class="broken_link">https://docs.quandl.com/docs/installation-1</a></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>วิธีที่ 3 ใช้โมดูล pandas-datareader</strong></h3>
+<p>&nbsp;</p>
+<p>ติดตั้งโมดูลด้วยคำสั่ง</p>
+<pre>pip install pandas-datareader</pre>
+<p>แต่ช่วงที่ผู้เขียนลองเล่นโมดูลนี้ดู ดันมีบั๊ก เลยต้องติดตั้งมอดูลข้างล่างนี้ด้วย (อนาคตถ้ามันแก้บักไปแล้ว อาจไม่ต้องติดตั้งก็ได้ ที่มา <a href="https://github.com/ranaroussi/fix-yahoo-finance" target="_blank" rel="noopener">https://github.com/ranaroussi/fix-yahoo-finance</a>)</p>
+<pre>pip install fix_yahoo_finance --upgrade --no-cache-dir</pre>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ด</p>
+<pre>from pandas_datareader import data as pdr
+import fix_yahoo_finance as yf # &lt;== that's all it takes :-)
+# download dataframe
+ptt = pdr.get_data_yahoo("PTT.BK", start="2017-01-01", end="2017-04-30")
+print(ptt.tail())</pre>
+<p>&nbsp;</p>
+<p><strong>หมายเหตุ</strong> ชื่อย่อหุ้นไทยจะมีชื่อ “.BK” ตามหลังชื่อย่อหุ้นนั้นๆ</p>
+<p>เช่น “PTT.BK”, “ AOT.BK”, “SCC.BK” (แต่ผมลองแล้ว ถ้าระบุ “SET.BK” ยังไม่ได้นะครับ)</p>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<pre>            Open High Low Close Adj Close Volume
+Date 
+2017-04-20 394.0 395.0 391.0 392.0 392.0 3020300
+2017-04-21 393.0 394.0 390.0 390.0 390.0 3032300
+2017-04-24 393.0 393.0 389.0 389.0 389.0 2994400
+2017-04-27 387.0 391.0 386.0 388.0 388.0 2104300
+2017-04-28 391.0 392.0 389.0 389.0 389.0 2451100</pre>
+<p>สังเกตวิธีนี้ให้ดีๆ ผลลัพธ์ที่แสดงออกมา จะมีราคาปิดของหุ้นอยู่ 2 ค่าได้แก่ Close (ราคาปิดธรรมดา) กับ Adj Close (<a href="http://www.investopedia.com/terms/a/adjusted_closing_price.asp" target="_blank" rel="noopener">Adjusted Closing Price</a>)</p>
+<p>&nbsp;</p>
+<p><strong>อ่านเพิ่มเติม</strong></p>
+<ul>
+<li><a href="https://github.com/pydata/pandas-datareader" target="_blank" rel="noopener">https://github.com/pydata/pandas-datareader</a></li>
+<li><a href="https://pandas-datareader.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://pandas-datareader.readthedocs.io/en/latest/</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>สำหรับวิธีที่ 1-3 ก็ดูโค้ดฉบับเต็มได้ที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/miscellaneous.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/miscellaneous.py</a></li>
+</ul>
+<p>*** ถ้าลองรันแล้วเห็น error ไม่ต้องตกใจ …เพราะวิธีที่ 2 ใช้โมดูล quandl ซึ่งต้องการค่า API KEY ของจริงครับ (คอมเมนต์ออกก่อนก็ได้ครับ)</p>
+<p>&nbsp;</p>
+<p><a name="method_4"></a></p>
+<h3><strong>วิธีที่ 4 </strong></h3>
+<p>ดาวน์โหลดไฟล์ EOD จาก <a href="http://siamchart.com/stock/" target="_blank" rel="noopener">http://siamchart.com/stock/</a></p>
+<p>เมื่อไปที่เว็บ เราก็ต้องสมัครเป็นสมาชิกเว็บเขาก่อน ถึงจะโหลดได้</p>
+<p><span style="color: #0000ff;">(เป็นวิธีลูกครึ่งนะ ครึ่งหนึ่งใช้มือดาวน์โหลด อีกครึ่งเขียนโปรแกรมเพื่อเตรียมข้อมูล)</span></p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7269" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Untitled-1.png" alt="" width="475" height="216" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-1.png 475w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-1-300x136.png 300w" sizes="(max-width: 475px) 100vw, 475px"></p>
+<p>&nbsp;</p>
+<p>จากรูปภาพข้างบน ต้องดาวน์โหลด 2 อย่าง ได้แก่</p>
+<ul>
+<li>ข้อมูล EOD ปี 1970 ถึงปีที่แล้ว (.csv)</li>
+<li>ข้อมูล EOD ต้นปีถึงปัจจุบัน (.csv)</li>
+</ul>
+<p>&nbsp;</p>
+<p>จากนั้นให้แตกไฟล์ .csv ออกมาจาก 2 แหล่งข้อมูลดังกล่าว แล้วมากองรวมกันที่โฟลเดอร์</p>
+<p>อย่างของผมแตกไฟล์ แล้วมารวมไว้ที่โฟลเดอร์ <strong>set-archive_EOD_UPDATE</strong></p>
+<p>ทั้งนี้ชื่อไฟล์ .csv &nbsp;จะเรียงตามวันที่ซื้อขาย (เริ่มตั้งแต่ซื้อขายวันแรก 30 เมษายน พ.ศ. 2518 )</p>
+<p>ซึ่งข้างในไฟล์จะเก็บข้อมูลหลักทรัพย์ทุกตัว ที่ซื้อขายในวันนั้นๆ</p>
+<p>&nbsp;</p>
+<p>ตัวอย่างไฟล์ set-history_EOD_2017-05-23.csv เป็นข้อมูลหลักทรัพย์ที่ซื้อขายเฉพาะในวันที่ 2017-05-23</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7270" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Untitled-2.png" alt="" width="546" height="484" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-2.png 546w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-2-300x266.png 300w" sizes="(max-width: 546px) 100vw, 546px"></p>
+<p>&nbsp;</p>
+<p>เนื่องจากข้อมูลที่ได้มา มันเอาไปใช้ลำบากนิดดดดหนึ่ง</p>
+<p>&nbsp;</p>
+<p>ผมเลยต้องจัดเตรียมข้อมูลใหม่ เพื่อให้ 1 ไฟล์เก็บเฉพาะข้อมูล 1 หลักทรัพย์ เช่น ไฟล์ PTT.csv ก็ให้มีเฉพาะข้อมูลหุ้น PTT ดังรูปข้างล่าง</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7271" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Untitled-3.png" alt="" width="547" height="486" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-3.png 547w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-3-300x267.png 300w" sizes="(max-width: 547px) 100vw, 547px"></p>
+<p>&nbsp;</p>
+<p>แถมผมยังจะเปลี่ยนชื่อหัวคอลัมน์ เป็น Open, High, Low, Close, Volume ( ไม่ใช่ “&lt;OPEN&gt;”, “&lt;HIGH&gt;”, “&lt;LOW&gt;”, “&lt;CLOSE&gt;”, “&lt;VOL&gt;”)</p>
+<p>&nbsp;</p>
+<p>…ด้วยเหตุนี้ผมเลยต้องเขียนโค้ดขึ้นเพิ่มเติม</p>
+<p>แต่ก่อนอื่นจะขอติดตั้งโมดูลเพิ่มเติม ได้แก่ tqdm ด้วยคำสั่งตามนี้</p>
+<pre>pip install tqdm</pre>
+<p>ถ้าถามว่าโมดูลนี้มีไว้ทำอะไร ก็ต้องบอกว่าเอาไว้แสดงสถานะแบบ progress bar บนคอมมานไลน์ ก็เวลาที่โค้ดมันทำงานจะนานสักนิดหนึ่ง เพราะข้อมูลมันเยอะ เลยต้องให้เห็นสถานะความคืบหน้าสักหน่อย</p>
+<p>…คราวนี้จะมาดูโครงสร้างโปรเจคก่อนเขียนโค้ด</p>
+<p>&nbsp;</p>
+<pre>root_folder\
+    |-- datasets\
+           |-- sec_csv\
+           |-- set-archive_EOD_UPDATE\
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;     |-- siamchart.py</pre>
+<ul>
+<li><strong>sec_csv</strong> เป็นโฟลเดอร์ เอาไว้เก็บไฟล์ .csv (เอาท์พุต)</li>
+<li><strong>set-archive_EOD_UPDATE</strong> เป็นโฟลเดอร์ เก็บไฟล์ .csv ที่ได้จาก <a href="http://siamchart.com/stock/" target="_blank" rel="noopener">http://siamchart.com/stock/</a> (ที่เราดาวน์โหลดมา)</li>
+<li><strong>siamchart.py</strong> คือโค้ดที่จะเขียนขึ้นมา</li>
+</ul>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ด</p>
+<pre>def getStockData(eodFiles, selectedSmbol = []):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dict = {}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # empty dictionary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for i, f in enumerate(eodFiles):# read all file&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df = pd.read_csv(f)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total_row = len(df.index)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; all_data = df.values;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #range(start, stop, step)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for row in range(total_row-1, -1, -1):&nbsp;&nbsp; # reveserse form range(0, total_row)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; symbol = all_data[row][0]&nbsp; # name of stock in frist column&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if len(selectedSmbol)!=0 :
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if not symbol in selectedSmbol: continue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if symbol == "COM7":
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         symbol = "COM7_" # fix bug for this symbol only
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; current_row = all_data[row]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if symbol in dict: &nbsp;&nbsp; # There are symbol data in dictionary
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dict[symbol].append(current_row) # append new data to old data
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else: # no symbol data in dictionary
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dict[symbol] = [current_row]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(i%500 == 0):&nbsp;&nbsp;# for debug&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print("Reading total files : {} ....".format(i))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return dict</pre>
+<p>&nbsp;</p>
+<pre>DIR_CURRENT = os.path.dirname(__file__)
+DIR_SEC_CSV = "sec_csv"
+# download: http://siamchart.com/stock/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Must register to login)
+EOD_file = "set-archive_EOD_UPDATE"
+def createSymbolCSV(start_idex, outputPath=DIR_SEC_CSV):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eodFiles = getFileNameInDir(EOD_file)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eodFiles = eodFiles[-1 * start_idex:]&nbsp;&nbsp;&nbsp; # select files latest N days&nbsp;&nbsp;&nbsp;
+
+                outputPath = join(DIR_CURRENT,outputPath)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clearDir(outputPath) # delete old files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                eodFiles = [ join(DIR_CURRENT,file) for file in eodFiles]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dataStock&nbsp; = getStockData(eodFiles)&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; headers = getHeaderFile(eodFiles)&nbsp;&nbsp;&nbsp;&nbsp; # Read header of CSV files
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; columnNames = { index:changeName(value)&nbsp; for index, value in enumerate(headers)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # write data to csv files seperate file name follow symbol names of security&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count = 0
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for key, allRow in dataStock.items():&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df = pd.DataFrame(allRow)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df.rename(columns=columnNames, inplace=True)&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fileName = "{}.csv".format(join(outputPath, key))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df.to_csv(fileName, index = False) # write data into CSV file (without index)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(count%3000 == 0):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # for debug&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print("Writing total files : {} ....".format(count))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; count+=1;</pre>
+<p>&nbsp;</p>
+<p>วิธีใช้งานฟังก์ชั่น</p>
+<pre>createSymbolCSV(2000)</pre>
+<p>โค้ดข้างบนจะสร้างไฟล์ .csv โดยใช้ข้อมูลของวันที่ปัจจุบัน นับย้อนหลังไป 2,000 วัน&nbsp;&nbsp;(ทำการ)</p>
+<p>(ขออภัยผมไม่ได้นำโค้ดทั้งหมดมาแสดงให้ดู ถ้าจะดูโค้ดทั้งหมด ผมแปะไว้ในท้ายข้อที่ 4 นี้แล้วนะครับ)</p>
+<p>&nbsp;</p>
+<p>เวลารันก็ใช้คำสั่ง</p>
+<pre>python siamchart.py</pre>
+<p>&nbsp;</p>
+<p>เมื่อโค้ดรันเสร็จ จะได้ไฟล์ .csv เป็นชื่อย่อของหลักทรัพย์นั้นๆ ดังรูปข้างล่าง</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7273" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Untitled-4.png" alt="" width="735" height="551" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-4.png 735w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-4-300x225.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-4-292x219.png 292w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Untitled-4-307x230.png 307w" sizes="(max-width: 735px) 100vw, 735px"></p>
+<p>&nbsp;</p>
+<p>สาเหตุที่ผมแยก .csv ตามชื่อหลักทรัพย์แต่ละตัว เพราะจะทำให้การเขียนโค้ดสะดวกขึ้น&nbsp;ดังรายละเอียดในหัวข้อ<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#get_data"><strong>วิธีนำข้อมูลมาใช้</strong></a></p>
+<p>&nbsp;</p>
+<p>โค้ดวิธีที่ 4 เวอร์ชั่นเต็มทั้งหมด ก็ดาวน์โหลดได้ที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/siamchart.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/siamchart.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>วิธีที่ 5&nbsp;Web scraping</strong></h3>
+<p>&nbsp;</p>
+<p>ยกตัวอย่างหุ้น PTT เมื่อใช้ URL เป็น</p>
+<p><a href="https://www.set.or.th/set/historicaltrading.do?symbol=BBL&amp;page=2&amp;language=en&amp;country=US&amp;type=trading" target="_blank" rel="noopener">https://www.set.or.th/set/historicaltrading.do?symbol=PTT&amp;page=2&amp;language=en&amp;country=US&amp;type=trading</a></p>
+<p>&nbsp;</p>
+<p>(ถ้าหุ้นตัวอื่นก็เปลี่ยนใน URL เช่น BBL ก็แก้ไขเป็น symbol=BBL)</p>
+<p>&nbsp;</p>
+<p>ก็จะเห็นหน้าตาเว็บดังนี้ (ราคาหุ้น PTT)</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7302" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/set_PTT.png" alt="" width="1365" height="624" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/set_PTT.png 1365w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/set_PTT-300x137.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/set_PTT-768x351.png 768w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/set_PTT-1024x468.png 1024w" sizes="(max-width: 1365px) 100vw, 1365px"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>เมื่อมองเป็นภาษา HTML</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7303" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/html_PTT.png" alt="" width="1365" height="715" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/html_PTT.png 1365w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/html_PTT-300x157.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/html_PTT-768x402.png 768w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/html_PTT-1024x536.png 1024w" sizes="(max-width: 1365px) 100vw, 1365px"></p>
+<p>&nbsp;</p>
+<p><a href="https://en.wikipedia.org/wiki/Web_scraping" target="_blank" rel="noopener">Web scraping</a> คือการดึงข้อมูลจากหน้าเว็บ โดยในทางโปรแกรมมิ่ง เนื้อหา HTML เราจะมองเป็นโครงสร้าง <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank" rel="noopener">DOM </a> แล้วก็สามารถเข้าถึงทีละ element ได้</p>
+<p>&nbsp;</p>
+<p>ด้วยเหตุนี้เราจึงสามารถเขียนโค้ดดึงข้อมูลราคาหุ้น PTT ได้ในภาษา Python ดังตัวอย่าง</p>
+<p>&nbsp;</p>
+<pre>def getTableData(symbol, page=1):
+&nbsp;&nbsp;&nbsp; if page &gt; 3:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; page = 3 # limit at 3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; url_string = "https://www.set.or.th/set/historicaltrading.do?symbol={0}".format(symbol)
+&nbsp;&nbsp;&nbsp; url_string += '&amp;page={0}&amp;language=en&amp;country=US&amp;type=trading'.format(page-1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; page = urllib.request.urlopen(url_string).read()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; soup = BeautifulSoup(page, 'lxml')&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; table_element =soup.find('table', class_='table table-hover table-info')
+&nbsp;&nbsp;&nbsp; return table_element, url_string</pre>
+<p>&nbsp;</p>
+<p>ลองทดสอบรันฟังก์ชั่น</p>
+<pre>table_element, url_string = getTableData("PTT")
+tr_list = table_element.findAll('tr')
+print(tr_list[0:2])</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์ (โชว์ข้อมูลแค่ส่วน header ของตาราง กับ ข้อมูลหุ้น PTT แถวแรก ถ้าโชว์หมดไม่ไหว มันเยอะไป)</p>
+<pre>[&lt;tr align="center" class="bggrey1"&gt;
+ &lt;th height="35" width="10%"&gt;&lt;strong&gt;Date&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;Open&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;High&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;Low&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;Close&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;Change&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="10%"&gt;&lt;strong&gt;%Change&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="13%"&gt;&lt;strong&gt;Total Volume&lt;br/&gt;(Shares)&lt;/strong&gt;&lt;/th&gt;
+ &lt;th width="17%"&gt;&lt;strong&gt;Total Value&lt;br/&gt;('000 Baht)&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;, &lt;tr align="right"&gt;
+ &lt;td align="center"&gt;16/06/2017&lt;/td&gt;
+ &lt;td&gt;380.00&lt;/td&gt;
+ &lt;td&gt;382.00&lt;/td&gt;
+ &lt;td&gt;377.00&lt;/td&gt;
+ &lt;td&gt;379.00&lt;/td&gt;
+ &lt;td&gt;&lt;font color="#FF0000"&gt; -1.00&lt;/font&gt;&lt;/td&gt;
+ &lt;td&gt;&lt;font color="#FF0000"&gt; -0.26&lt;/font&gt;&lt;/td&gt;
+ &lt;td&gt;4,051,989&lt;/td&gt;
+ &lt;td&gt;1,537,504.20&lt;/td&gt;
+ &lt;/tr&gt;]</pre>
+<p>&nbsp;</p>
+<p>ดูโค้ดวิธีที่ 5 ฉบับเต็มได้ที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/web_set_price.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/web_set_price.py</a></li>
+<li><span class="pl-c1">ในโค้ด</span><span class="pl-c1">จะมีการเซฟข้อมูลเก็บไว้เป็นไฟล์ .csv ที่โฟลเดอร์ DIR_SEC_CSV</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">“</span>sec_set_price<span class="pl-pds">“</span></span></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>แต่มีข้อควรระวัง</strong> วิธีที่ 5 ด้วย Web scraping เหมือนดาบสองคม ถ้าเรียกใช้ติดต่อกันถี่ๆ ก็จะเหมือนเราส่ง request ไปโจมตี Server ….เดี่ยวเจอเพ่งเล็งจากตลาดหลักทรัพย์ได้ว่า <a href="https://th.wikipedia.org/wiki/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%82%E0%B8%88%E0%B8%A1%E0%B8%95%E0%B8%B5%E0%B9%82%E0%B8%94%E0%B8%A2%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B9%80%E0%B8%AA%E0%B8%98%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3" target="_blank" rel="noopener">เป็นการโจมตีแบบ DOS</a>&nbsp; <strong><span style="color: #ff0000;">บทความนี้ไม่แนะนำ&nbsp;เอาไปใช้ดูหุ้นแบบ real time นะครับ</span></strong></p>
+<p>&nbsp;</p>
+<h3><strong>วิธีที่ 6 สุดท้าย (ไม่รู้จะนับรวมดีไหม)</strong></h3>
+<p>&nbsp;</p>
+<p>ยังมีวิธีเรียกดูข้อมูลด้วยโมดูล yahoo_finance</p>
+<p>ติดตั้งโมดูลด้วยคำสั่ง</p>
+<pre>pip install yahoo_finance
+</pre>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ด ดูหุ้นฝรั่ง YHOO และค่าเงิน EURPLN</p>
+<pre>from yahoo_finance import Share
+yahoo = Share("YHOO")
+print("\n++++YHOO stock++++")
+print (yahoo.get_open())
+print (yahoo.get_price())
+print (yahoo.get_trade_datetime())
+
+from yahoo_finance import Currency
+eur_pln = Currency('EURPLN')
+print("\n++++Currency of EURPLN++++")
+print (eur_pln.get_bid())
+print (eur_pln.get_ask())
+print (eur_pln.get_rate())
+print (eur_pln.get_trade_datetime())</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<pre>++++YHOO stock++++
+None
+52.58
+2017-06-16 20:00:00 UTC+0000
+
+++++Currency of EURPLN++++
+4.2100
+4.2110
+4.2100
+2017-06-19 16:10:00 UTC+0000</pre>
+<p>&nbsp;</p>
+<p>แต่อนิจจัง วัฏสังขารา …ผมไม่รู้วิธีเรียกดูข้อมูลหุ้นไทยอะนะ ใครทำเป็นบอกที</p>
+<p>ถ้าไงลองอ่านเพิ่มเติมได้ที่ <a href="https://pypi.python.org/pypi/yahoo-finance" target="_blank" rel="noopener">https://pypi.python.org/pypi/yahoo-finance</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>ดูโค้ดตัวอย่างได้ที่ (โค้ดจะกองรวมกันอยู่กับวิธีในข้อ 1-3)</strong></p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/miscellaneous.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/miscellaneous.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<p><a name="get_data"></a></p>
+<h1><strong>วิธีนำข้อมูลมาใช้</strong></h1>
+<p>&nbsp;</p>
+<p>ตอนแรก &nbsp;ถ้าจบแค่การดึงข้อมูลหุ้นไทยออกมา คงกะไรอยู่ ผมเลยต่อยอดด้วยการนำเอาข้อมูลมาใช้ต่อ เป็นพื้นฐานนะ…ซึ่งจะเอาข้อมูลเฉพาะที่ได้จาก<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#method_4"><strong>วิธีที่ 4</strong></a> <strong>รวมทั้งโค้ดด้วย</strong> เอามาใช้งานต่อ (ขอตกลงตามนี้ก่อนนะ)</p>
+<p>&nbsp;</p>
+<h4><strong>ตัวอย่างอ่านข้อมูลเฉพาะหุ้น PTT มาแสดงผล</strong></h4>
+<p>&nbsp;</p>
+<pre>def load_OHLCV(symbol, dates,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column_names=['Open', 'High', 'Low', 'Close', 'Volume'],&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base_dir=DIR_SEC_CSV):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; """Read securities data for given symbols from CSV files."""
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_main = pd.DataFrame(index=dates)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # empty data frame that has indexs as dates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 'Date' not in column_names:&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column_names = np.append(['Date'],column_names)
+
+                        base_dir = join(DIR_CURRENT,base_dir)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv_file = os.path.join(base_dir, "{}.csv".format(symbol))
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_csv = pd.read_csv(csv_file, index_col='Date',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parse_dates=True, usecols=column_names, na_values=['nan'])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_main = df_main.join(df_csv)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_main = df_main.dropna(0)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return df_main</pre>
+<p>&nbsp;</p>
+<p>เรียกฟังก์ชั่นให้ทำงาน โดยข้อมูลเริ่มต้นคือวันที่ ‘2017-03-01’ ถึงวันที่ปัจจุบัน (ตอนที่เขียนบทความคือวันที่ 2017-06-16)</p>
+<p>&nbsp;</p>
+<pre>startDate = '2017-03-01'
+endDate = strftime("%Y-%m-%d", gmtime())
+dates = pd.date_range(startDate, endDate)
+df = load_OHLCV("PTT", dates)
+print(df.tail())</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Open&nbsp;&nbsp; High&nbsp;&nbsp;&nbsp; Low&nbsp; Close&nbsp;&nbsp;&nbsp;&nbsp; Volume
+2017-06-12&nbsp; 384.0&nbsp; 384.0&nbsp; 380.0&nbsp; 381.0&nbsp; 2245000.0
+2017-06-13&nbsp; 382.0&nbsp; 386.0&nbsp; 379.0&nbsp; 385.0&nbsp; 6457400.0
+2017-06-14&nbsp; 385.0&nbsp; 386.0&nbsp; 383.0&nbsp; 384.0&nbsp; 2672300.0
+2017-06-15&nbsp; 383.0&nbsp; 384.0&nbsp; 379.0&nbsp; 380.0&nbsp; 5239600.0
+2017-06-16&nbsp; 380.0&nbsp; 382.0&nbsp; 377.0&nbsp; 379.0&nbsp; 4050700.0</pre>
+<p>ผลลัพธ์จะแสดงค่าข้อมูลหุ้น PPT ได้แก่ ราคาเปิด (Open) ราคาสูงสุด (High) ราคาต่ำสุด (Low) ราคาปิด (Close) และปริมาณการซื้อขาย (Volume) ของ 5 วันล่าสุด</p>
+<p>&nbsp;</p>
+<h4><strong>ตัวอย่างพล็อตกราฟแท่งเทียนของหุ้น </strong><strong>PTT</strong></h4>
+<p>&nbsp;</p>
+<pre># Borrowed code from : http://matplotlib.org/examples/pylab_examples/finance_demo.
+def plotCandlestick(symbol, dates, title="Selected data"):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quotes = loadStockQuotes(symbol, dates)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mondays = WeekdayLocator(MONDAY)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # major ticks on the mondays
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alldays = DayLocator()&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # minor ticks on the days
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weekFormatter = DateFormatter('%b %d')&nbsp; # e.g., Jan 12
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dayFormatter = DateFormatter('%d')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # e.g., 12
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fig, ax = plt.subplots()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fig.subplots_adjust(bottom=0.2)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.xaxis.set_major_locator(mondays)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.xaxis.set_minor_locator(alldays)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.xaxis.set_major_formatter(weekFormatter)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #ax.xaxis.set_minor_formatter(dayFormatter)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #plot_day_summary(ax, quotes, ticksize=3)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; candlestick_ohlc(ax, quotes, width=0.6)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.xaxis_date()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.autoscale_view()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ax.set_title(title)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.show()</pre>
+<p>เรียกใช้ฟังก์ชั่น</p>
+<pre>plotCandlestick("PTT", dates, title ="PTT symbol")</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<p>&nbsp;</p>
+<p><img class="aligncenter size-full wp-image-7274" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Figure_1.png" alt="" width="640" height="480" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1.png 640w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-300x225.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-292x219.png 292w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-307x230.png 307w" sizes="(max-width: 640px) 100vw, 640px"></p>
+<p>&nbsp;</p>
+<h4>ตัวอย่าง หุ้น PTT, AOT, SCC, CPALL จะเอาเฉพาะราคาปิด (Close) มาแสดงพร้อมกันทั้ง 5 ตัว (รวม SET ด้วย)</h4>
+<p>&nbsp;</p>
+<pre>def loadManySymbols(symbols, dates, column_name, base_dir):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; """Read securities data for given symbols from CSV files."""
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df = pd.DataFrame(index=dates)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # empty data frame that has indexs as dates
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if 'SET' not in symbols:&nbsp; # add SET for reference, if absent
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; symbols = np.append(['SET'],symbols)
+
+                base_dir = join(DIR_CURRENT,base_dir)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for symbol in symbols:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # read CSV file path given ticker symbol.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; csv_file = os.path.join(base_dir, symbol + '.csv');
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_temp = pd.read_csv(csv_file, index_col='Date',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parse_dates=True, usecols=['Date', column_name], na_values=['nan'])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df_temp = df_temp.rename(columns={column_name: symbol})
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df = df.join(df_temp) # left join by default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if symbol == 'SET':&nbsp; # drop dates SET did not trade (nan values)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; df = df.dropna(subset=["SET"])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return df</pre>
+<p>&nbsp;</p>
+<pre>def loadPriceData(symbols, dates,&nbsp; base_dir=DIR_SEC_CSV):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return loadManySymbols(symbols, dates, 'Close', base_dir)</pre>
+<p>&nbsp;</p>
+<p>เรียกใช้ฟังก์ชั่น</p>
+<pre>symbols = ["PTT", "AOT", "SCC", "CPALL"]
+df = loadPriceData(symbols, dates)
+print(df.tail())</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์ &nbsp;(เอาข้อมูล 5 วันล่าสุด มาแสดง)</p>
+<pre>               SET   PTT   AOT   SCC CPALL
+2017-06-12 1563.81 381.0 44.00 520.0 61.75
+2017-06-13 1572.36 385.0 44.25 518.0 62.00
+2017-06-14 1577.00 384.0 44.25 520.0 62.00
+2017-06-15 1573.53 380.0 44.50 516.0 61.75
+2017-06-16 1576.58 379.0 45.25 518.0 61.75</pre>
+<p><strong>หมายเหตุ</strong> ฟังก์ชั่น loadManySymbols() จะแอบโหลดข้อมูล SET มาแปะไว้เป็นคอลัมน์แรกเสมอ</p>
+<p>&nbsp;</p>
+<p>หรือจะพล็อตกราฟรวม</p>
+<pre>df = df/df.iloc[0,:]
+df.plot()
+plt.show()</pre>
+<p>&nbsp;</p>
+<p>ในโค้ดบรรทัดที่เขียน df = df/df.iloc[0,:] จะเป็นการทำ normalized &nbsp;อย่างง่ายๆ โดยหุ้นแต่ละตัวจะเอาข้อมูล ณ วันที่เริ่มต้นมาหารวันอื่นที่เหลือทั้งหมด (บทความนี้ วันที่เริ่มต้นคือ ‘2017-03-01’ )</p>
+<p>&nbsp;</p>
+<p>ที่ทำแบบนี้จะได้เห็นภาพหุ้นแต่ละตัวในกราฟเดียวกันง่ายขึ้น (มีเสกลเดียวกัน) ดังรูปข้างล่าง</p>
+<p><img class="aligncenter size-full wp-image-7275" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Figure_1-1.png" alt="" width="640" height="480" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-1.png 640w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-1-300x225.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-1-292x219.png 292w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1-1-307x230.png 307w" sizes="(max-width: 640px) 100vw, 640px"></p>
+<p>สำหรับโค้ดส่วนนี้ เวอร์ชั่นเต็มทั้งหมด ก็ดาวน์โหลดที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/siamchart.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/dataset_siamchart.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>หมายเหตุ</strong> เนื่องจากการดาวน์โหลดไฟล์ EOD จากเว็บ <a href="http://www.siamchart.com/" target="_blank" rel="noopener">http://www.siamchart.com/</a> อาจดูยุ่งยากไป</p>
+<p>จึงอาจใช้วิธีที่ 3 (โมดูล pandas-datareader) ซึ่งจะดาวน์โหลดข้อมูลแบบออนไลน์ได้โดยตรง &nbsp;(แต่ยังมีปัญหาตรงที่ดาวน์โหลดข้อมูล SET ไม่ได้)</p>
+<p>&nbsp;</p>
+<p>และผมก็ทำตัวอย่างซอร์สโค้ดไว้ที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/pandas_reader.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/pandas_reader.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>โดยมีชื่อฟังก์ชั่นและใช้งานได้เหมือนกันดังนี้ (พารามิเตอร์ต่างกันนิดหน่อย)</p>
+<ul>
+<li>load_OHLCV</li>
+<li>plotCandlestick</li>
+<li>loadPriceData (ไม่ได้แปะข้อมูล SET ที่คอลัมน์แรก)</li>
+</ul>
+<p>&nbsp;</p>
+<h3><strong>คำนวณ </strong><strong>Indicator อย่างง่าย </strong></h3>
+<p>&nbsp;</p>
+<p>จะกำหนดโครงสร้างโปรเจคใหม่</p>
+<pre>root_folder\
+    |-- datasets\
+           |-- sec_csv\
+           |-- set-archive_EOD_UPDATE\
+           |-- siamchart.py
+    |-- indicator_example.py
+</pre>
+<p>ไฟล์ <strong>indicator_example.py</strong> เอาไว้ใช้คำนวณ Indicator อย่างง่าย โดยข้างในจะอิมพอร์ต <strong>siamchart.py</strong> เข้ามาอีกที ดังนี้</p>
+<pre>import datasets.siamchart as ds</pre>
+<p>&nbsp;</p>
+<h4><strong>ตัวอย่างคำนวณค่า </strong><strong>EMA ของหุ้น PTT, AOT, SCC, CPALL (รวม SET ด้วย)</strong></h4>
+<p>&nbsp;</p>
+<p><strong>EMA&nbsp;</strong>(Exponential Moving Average)<strong>&nbsp;</strong>&nbsp;หรือก็คือ <strong>เส้นค่าเฉลี่ยเคลื่อนที่แบบเอกซ์โพเนนเชียล</strong> สำหรับนักลงทุนสายเทคนิคคงรู้จักกันดีอยู่แล้ว <a href="http://www.aommoney.com/daddytrader/%E0%B8%A3%E0%B8%A7%E0%B8%A2%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%AB%E0%B8%B8%E0%B9%89%E0%B8%99-4-ema#gs._4KZuBI" target="_blank" rel="noopener">ใครไม่ทราบลองอ่านดูที่นี้แล้วกันครับ</a></p>
+<p>&nbsp;</p>
+<p>ส่วนที่มาสูตรคงไม่ลงลึกนะครับ <a href="http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_averages" target="_blank" rel="noopener">ลองหาอ่านดูที่นี้</a></p>
+<p><em>&nbsp;</em></p>
+<p>วิธีคำนวณ สามารถเขียนโค้ดได้ดังนี้</p>
+<pre>def ema(df, periods=12):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return df.ewm(span=periods, adjust=True, min_periods=0, ignore_na=False).mean()</pre>
+<p>&nbsp;</p>
+<p>ลองทดสอบฟังก์ชั่น ด้วยการหา EMA (15 วัน) ของหุ้นทั้ง 5 ตัว (รวม SET ด้วย)</p>
+<pre>startDate = '2017-03-01'
+endDate = strftime("%Y-%m-%d", gmtime())
+dates = pd.date_range(startDate, endDate)
+symbols = ["PTT", "AOT", "SCC", "CPALL"]
+df = ds.loadPriceData(symbols, dates)
+ema15 = ema(df, 15)
+print(ema15.tail())</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์&nbsp;(แสดงเฉพาะข้อมูลล่าสุด 5 ตัว)</p>
+<pre>&nbsp;                SET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PTT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AOT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SCC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CPALL
+2017-06-12&nbsp; 1565.149192&nbsp; 386.862403&nbsp; 43.625811&nbsp; 521.696472&nbsp; 62.367670
+2017-06-13&nbsp; 1566.050622&nbsp; 386.629583&nbsp; 43.703841&nbsp; 521.234373&nbsp; 62.321708
+2017-06-14&nbsp; 1567.419399&nbsp; 386.300860&nbsp; 43.772116&nbsp; 521.080064&nbsp; 62.281491
+2017-06-15&nbsp; 1568.183275&nbsp; 385.513200&nbsp; 43.863108&nbsp; 520.445014&nbsp; 62.215050
+2017-06-16&nbsp; 1569.232927&nbsp; 384.699002&nbsp; 44.036479&nbsp; 520.139369&nbsp; 62.156916
+</pre>
+<p>&nbsp;</p>
+<h4><strong>ตัวอย่างคำนวณค่า </strong><strong>MACD ของหุ้น PTT, AOT, SCC, CPALL (รวม SET ด้วย)</strong></h4>
+<p>&nbsp;</p>
+<p>ตัวเลข <strong>MACD</strong> (Moving Average Convergence Divergence) &nbsp;อ่านว่า “Mac-Dee” หรือจะได้เรียกว่า “ M-A-C-D” ก็ได้ ซึ่งนักลงทุนสายเทคนิคคงรู้จักดีอยู่แล้ว <a href="http://www.aommoney.com/daddytrader/%E0%B8%9A%E0%B8%97%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84/%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B8%8A%E0%B9%88%E0%B8%A7%E0%B8%A2-%E0%B8%A3%E0%B8%A7%E0%B8%A2%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%AB%E0%B8%B8%E0%B9%89%E0%B8%99%E0%B9%80%E0%B8%97%E0%B8%84-2#gs.nDsbzQM" target="_blank" rel="noopener">ใครไม่ทราบลองอ่านดูที่นี้แล้วกันครับ</a></p>
+<p>&nbsp;</p>
+<p>ส่วนที่มาสูตรคงไม่ลงลึกนะครับ <a href="http://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_average_convergence_divergence_macd" target="_blank" rel="noopener">ลองหาอ่านดูได้ที่นี้</a></p>
+<p>&nbsp;</p>
+<p>วิธีคำนวณ สามารถเขียนโค้ดได้ดังนี้</p>
+<pre>def average_convergence(df, period_low=26, period_fast=12):
+&nbsp;&nbsp;&nbsp; """
+&nbsp;&nbsp;&nbsp; compute the MACD (Moving Average Convergence/Divergence)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; using a fast and slow exponential moving average'&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; """
+&nbsp;&nbsp;&nbsp; emaslow = ema(df, period_low)
+&nbsp;&nbsp;&nbsp; emafast = ema(df, period_fast)
+&nbsp;&nbsp;&nbsp; return (emaslow, emafast, emafast - emaslow)</pre>
+<p>&nbsp;</p>
+<p>ลองทดสอบฟังก์ชั่น ด้วยการหา MACD ของหุ้นทั้ง 5 ตัว (รวม SET ด้วย) โดยใช้ตัวแปร df จากตัวอย่างก่อน</p>
+<pre>_, _, macd = average_convergence(df)
+print(macd.tail())</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์ (แสดงเฉพาะข้อมูลล่าสุด 5 ตัว)</p>
+<pre>                SET &nbsp; &nbsp; &nbsp;PTT &nbsp; &nbsp;  &nbsp; AOT &nbsp; &nbsp;  SCC &nbsp; &nbsp;  &nbsp;CPALL
+ 2017-06-12&nbsp; 1.259309 -2.217163&nbsp; 0.895479 -2.101097 -0.123858
+ 2017-06-13&nbsp; 1.701377 -2.143972&nbsp; 0.860915 -2.207254 -0.137174
+ 2017-06-14&nbsp; 2.396993 -2.141642&nbsp; 0.824020 -2.106336 -0.146042
+ 2017-06-15&nbsp; 2.638832 -2.433321&nbsp; 0.805589 -2.321180 -0.171195
+ 2017-06-16&nbsp; 3.040693 -2.713592&nbsp; 0.841591 -2.304025 -0.188948</pre>
+<p>&nbsp;</p>
+<h4><strong>ตัวอย่างพล็อตกราฟของหลักทรัพย์ทั้งหมด พร้อมค่า </strong><strong>EMA 15 วัน, EMA 45 วัน และ EMA 100 วัน</strong></h4>
+<p>&nbsp;</p>
+<p>ตัวอย่างโค้ดฟังก์ชั่นเอาไว้พล็อตกราฟ</p>
+<pre>def plot_graph(values):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; style = ['b-', 'r-', 'g-', 'k-', 'y-']
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column_list = values[0].columns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num_stock = len(column_list)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; date = values[0].index&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if num_stock &gt; 6:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; num_stock = 6&nbsp; # Fix size
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for pos in range(0, num_stock):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; column = column_list[pos]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.subplot(2, 3, pos+1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for i&nbsp; in range(0, len(values)):
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.plot(date, values[i][column], style[i])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.title(column)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.xticks([])&nbsp;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; plt.show()
+</pre>
+<p>&nbsp;</p>
+<p>นำตัวแปร df และ ema15 จากหัวข้อก่อนหน้านี้มาเรียกใช้ พร้อมทั้งเพิ่มตัวแปร ema45 และ ema100 เอาไว้เก็บค่า EMA 45 วัน และ EMA 100 ตามลำดับ</p>
+<pre>ema45 = ema(df, 45)
+ema100 = ema(df, 100)&nbsp;
+values = [df, ema15, ema45, ema100]
+plot_graph(values)</pre>
+<p>&nbsp;</p>
+<p>ได้ผลลัพธ์</p>
+<p><img class="aligncenter size-full wp-image-7414" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/Figure_1_6.png" alt="" width="1366" height="639" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1_6.png 1366w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1_6-300x140.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1_6-768x359.png 768w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/Figure_1_6-1024x479.png 1024w" sizes="(max-width: 1366px) 100vw, 1366px"></p>
+<p>ในกราฟแต่ละรูป เส้นสีน้ำเงินคือราคาของหลักทรัพย์แต่ละตัว</p>
+<p>ส่วนเส้นสีแดง เขียว และดำ ในแต่ละกราฟ มันคือเส้น EMA 15 วัน , EMA 45 วัน และ 100 วันตามลำดับ</p>
+<p>&nbsp;</p>
+<p>สำหรับโค้ดส่วนนี้ เวอร์ชั่นเต็มทั้งหมด ก็ดาวน์โหลดที่</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/indicator_example.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/indicator_example.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>อ่ออีกอย่าง ผมก็ทำตัวอย่างการคำนวณ Indicator ตัวอื่นไว้ด้วย โค้ดรกๆ หน่อย ไม่เป็นระเบียบ และยังไม่เสร็จดีด้วยครับ ตัวอย่าง เช่น</p>
+<blockquote><p>ROC, Bollinger Band (BBANDS), daily returns, SMA, EMA, MACD, RSI, Sharpe ratio,True Range (TR), ATR, Beta, OBV และอื่นๆ</p></blockquote>
+<p>&nbsp;</p>
+<p>เผื่อใครสนใจโค้ดก็ดูได้ที่นี้</p>
+<ul>
+<li><a href="https://github.com/adminho/trading-stock-thailand/blob/master/indicator.py" target="_blank" rel="noopener">https://github.com/adminho/trading-stock-thailand/blob/master/indicator.py</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>หวังว่าบทความนี้จะมีประโยชน์ต่อทุกคนนะครับ และถ้าเขียนผิดพลาดตรงไหนทักได้นะครับ</p>
+<p>&nbsp;</p>
+<hr>
+<h3></h3>
+<h2>เพิ่มเติมให้ สำหรับใครที่อยากเอาโค้ดไปพัฒนาต่อ</h2>
+<p>&nbsp;</p>
+<p>สำหรับการนำ Python ไปใช้จัดการข้อมูล อย่างในบทความนี้คือหุ้นเป็นหลัก<br>
+ก็จะใช้ไลบรารี่ 4 อย่าง ที่เป็นพระเอกดังนี้</p>
+<p>&nbsp;</p>
+<h4><strong>1 Panda</strong></h4>
+<p>&nbsp;</p>
+<p>จะใช้สร้างโครงสร้างข้อมูลแบบตาราง จะช่วยให้เราสามารถประมวลผลทั้งตารางได้สะดวกมากขึ้น รวมทั้ง export ออกมาเป็น exel, csv, หรือ text ไฟล์ก็สะดวก ดูสรุปการใช้ไลบรารี่นี้ได้ดังภาพข้างล่าง</p>
+<figure style="width: 800px" class="wp-caption aligncenter"><a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf" target="_blank" rel="noopener"><img src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/content_2button-cheatsheet-pandas2.png" alt="" width="800" height="551"></a><figcaption class="wp-caption-text">ที่มา <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf" target="_blank" rel="noopener">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Pandas_Cheat_Sheet_2.pdf</a></figcaption></figure>
+<p>&nbsp;</p>
+<figure id="attachment_7390" style="width: 2000px" class="wp-caption aligncenter"><a href="https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener"><img class="wp-image-7390 size-full" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/pandas_sheet2.png" alt="" width="2000" height="1545" srcset="http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/pandas_sheet2.png 2000w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/pandas_sheet2-300x232.png 300w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/pandas_sheet2-768x593.png 768w, http://www.patanasongsivilai.com/blog/wp-content/uploads/2017/06/pandas_sheet2-1024x791.png 1024w" sizes="(max-width: 2000px) 100vw, 2000px"></a><figcaption class="wp-caption-text">ที่มา <a href="https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf</a></figcaption></figure>
+<h4></h4>
+<h4><strong>2 Numpy</strong></h4>
+<p>&nbsp;</p>
+<p>เอาไว้คำนวณด้านตัวเลข จัดการพวกแอเรย์ ทำได้อย่างสะดวก ดูสรุปการใช้ไลบรารี่นี้ได้ดังภาพข้างล่าง</p>
+<figure style="width: 800px" class="wp-caption aligncenter"><a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf" target="_blank" rel="noopener"><img src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/content_content_button-cheatsheet-numpy.png" alt="" width="800" height="551"></a><figcaption class="wp-caption-text">ที่มา <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf" target="_blank" rel="noopener">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf</a></figcaption></figure>
+<p>&nbsp;</p>
+<h4><strong>3 Scipy</strong></h4>
+<p>&nbsp;</p>
+<p>เอาไว้คำนวณด้านเลข วิทยาศาสตร์ วิศวกรรม ดูสรุปการใช้ไลบรารี่นี้ได้ดังภาพข้างล่าง</p>
+<figure style="width: 800px" class="wp-caption aligncenter"><a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_SciPy_Cheat_Sheet_Linear_Algebra.pdf" target="_blank" rel="noopener"><img src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/content_content_button-cheatsheet-scipy.png" alt="" width="800" height="551"></a><figcaption class="wp-caption-text">ที่มา <a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_SciPy_Cheat_Sheet_Linear_Algebra.pdf" target="_blank" rel="noopener">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_SciPy_Cheat_Sheet_Linear_Algebra.pdf</a></figcaption></figure>
+<p>&nbsp;</p>
+<h4><strong>4 Matplotlib</strong></h4>
+<p>&nbsp;</p>
+<p>เอาไว้พล็อตกราฟ ดูสรุปการใช้ไลบรารี่นี้ได้ดังภาพข้างล่าง</p>
+<figure style="width: 800px" class="wp-caption aligncenter"><a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf" target="_blank" rel="noopener"><img src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/content_content_button-cheatsheet-matplotlib.png" alt="" width="800" height="551"></a><figcaption class="wp-caption-text">ที่มา&nbsp;<a href="https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf" target="_blank" rel="noopener">https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf</a></figcaption></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>เขียนโดย</strong> <a href="https://www.google.com/+PatanaPatanasongsivilai?rel=author">แอดมินโฮ โอน้อยออก</a></p>
+<h3 class="widget-title"><a href="http://www.facebook.com/programmerthai" target="_blank" rel="noopener"><img class="size-full wp-image-7693 alignleft" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/logo_facebook2.png" alt="" width="37" height="38">Please like Fanpage</a></h3>
+<p>&nbsp;</p>
+							
+					<div class="comment_section">
+                    	<!--Start Comment list-->
+						<!-- You can start editing here. -->
+						<div id="commentsbox">
+							<div class="commentform_wrapper">
+							
+							
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			6 thoughts on “<span>วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)</span>”		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-97" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-97" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/a5f6a454bf957f2927bbd94f73de2f88" srcset="http://1.gravatar.com/avatar/a5f6a454bf957f2927bbd94f73de2f88?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn">kit</b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-97">
+							<time datetime="2017-06-21T07:59:49+00:00">
+								21 มิถุนายน 2017 ที่ 07:59							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>ตรง getFileName, getStockData นี่ใช้ function อะไรครับ</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=97#respond" onclick="return addComment.moveForm( &quot;div-comment-97&quot;, &quot;97&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ kit">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-98" class="comment byuser comment-author-2 bypostauthor odd alt depth-2 parent">
+			<article id="div-comment-98" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/e279e013a2915e616c7ed25c0b7bc952" srcset="http://2.gravatar.com/avatar/e279e013a2915e616c7ed25c0b7bc952?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn">แอดมินโฮ โอน้อยออก</b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-98">
+							<time datetime="2017-06-21T11:42:47+00:00">
+								21 มิถุนายน 2017 ที่ 11:42							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>ขออภัยที่ไม่แสดงโค้ดให้ดูอย่างละเอียด<br>
+ลองเข้าไปดูโค้ดเต็มๆ ได้ครับ<br>
+<a href="https://github.com/adminho/trading-stock-thailand/blob/master/dataset_siamchart.py" target="_blank" rel="nofollow">https://github.com/adminho/trading-stock-thailand/blob/master/dataset_siamchart.py</a></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=98#respond" onclick="return addComment.moveForm( &quot;div-comment-98&quot;, &quot;98&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ แอดมินโฮ โอน้อยออก">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-157" class="comment even depth-3 parent">
+			<article id="div-comment-157" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/963b34a781c26edef8c44efa689d9e6f" srcset="http://0.gravatar.com/avatar/963b34a781c26edef8c44efa689d9e6f?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn">Yord</b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-157">
+							<time datetime="2017-09-16T01:54:07+00:00">
+								16 กันยายน 2017 ที่ 01:54							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>เข้าไปที่ <a href="https://github.com/adminho/trading-stock-thailand/blob/master/dataset_siamchart.py" rel="nofollow">https://github.com/adminho/trading-stock-thailand/blob/master/dataset_siamchart.py</a> แล้วไม่มีไฟล์ รบกวนด้วยครับ</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=157#respond" onclick="return addComment.moveForm( &quot;div-comment-157&quot;, &quot;157&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ Yord">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-161" class="comment byuser comment-author-2 bypostauthor odd alt depth-4">
+			<article id="div-comment-161" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/e279e013a2915e616c7ed25c0b7bc952" srcset="http://2.gravatar.com/avatar/e279e013a2915e616c7ed25c0b7bc952?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn">แอดมินโฮ โอน้อยออก</b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-161">
+							<time datetime="2017-09-21T12:22:07+00:00">
+								21 กันยายน 2017 ที่ 12:22							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p><a href="https://github.com/adminho/trading-stock-thailand/blob/master/datasets/siamchart.py" target="_blank" rel="noopener nofollow">https://github.com/adminho/trading-stock-thailand/blob/master/datasets/siamchart.py</a></p>
+<p>โทษทีครับ</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=161#respond" onclick="return addComment.moveForm( &quot;div-comment-161&quot;, &quot;161&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ แอดมินโฮ โอน้อยออก">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-100" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-100" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/a884e5d03edf7ad83b0e8eb800e8568a" srcset="http://1.gravatar.com/avatar/a884e5d03edf7ad83b0e8eb800e8568a?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn"><a href="http://twitter.com/rawin_n" rel="external nofollow" class="url">Rawin Ngamloet</a></b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-100">
+							<time datetime="2017-06-29T10:13:04+00:00">
+								29 มิถุนายน 2017 ที่ 10:13							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>บทความดีมากครับ </p>
+<p>ปล. ต้องใช้คำว่า “ไส้แห้ง” นะครับ ​</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=100#respond" onclick="return addComment.moveForm( &quot;div-comment-100&quot;, &quot;100&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ Rawin Ngamloet">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+<ol class="children">
+		<li id="comment-101" class="comment byuser comment-author-2 bypostauthor odd alt depth-2">
+			<article id="div-comment-101" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt="" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/e279e013a2915e616c7ed25c0b7bc952" srcset="http://2.gravatar.com/avatar/e279e013a2915e616c7ed25c0b7bc952?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo" height="32" width="32">						<b class="fn">แอดมินโฮ โอน้อยออก</b> <span class="says">พูดว่า:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="http://www.patanasongsivilai.com/blog/stock-thai-python/#comment-101">
+							<time datetime="2017-06-29T11:26:28+00:00">
+								29 มิถุนายน 2017 ที่ 11:26							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>ขอบคุณครับ</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/?replytocom=101#respond" onclick="return addComment.moveForm( &quot;div-comment-101&quot;, &quot;101&quot;, &quot;respond&quot;, &quot;7267&quot; )" aria-label="ตอบกลับไปที่ แอดมินโฮ โอน้อยออก">ตอบกลับ</a></div>			</article><!-- .comment-body -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">ใส่ความเห็น <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.patanasongsivilai.com/blog/stock-thai-python/#respond" style="display:none;">ยกเลิกการตอบ</a></small></h3>			<form action="http://www.patanasongsivilai.com/blog/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">อีเมลของคุณจะไม่แสดงให้คนอื่นเห็น</span> ช่องที่ต้องการถูกทำเครื่องหมาย <span class="required">*</span></p><div class="col-sm-12 form-group comment-form-comment">
+           
+            <textarea class="form-control" id="comment" name="comment" cols="45" rows="8" aria-required="true" required="required" placeholder="Leave your comment here..*"></textarea>
+        </div><div class="col-sm-12 form-group comment-form-author"> <input class="form-control" id="author" name="author" type="text" value="" size="30" aria-required="true" required="required" placeholder="Your Name*"></div>
+<div class="col-sm-12 form-group comment-form-email"> <input class="form-control" id="email" name="email" type="text" value="" required="required" size="30" aria-required="true" placeholder="Email*"></div>
+<div class=" col-sm-12 form-group comment-form-url"><input class="form-control" id="url" name="url" type="text" value="" size="30" placeholder="Your URL"></div>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="btn submit-btn pull-right" value="แสดงความเห็น"> <input type="hidden" name="comment_post_ID" value="7267" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="363592f4f9"></p><p style="display: none;"></p>			<input type="hidden" id="ak_js" name="ak_js" value="1511967367736"></form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+ 
+							</div>
+		                    <!--End Comment Form-->
+		                </div>
+						</div>
+
+						
+					</div>	
+
+                   
+                 
+               
+				</div>
+				 
+			</div>
+
+			<!--Side Bar Section (can be place both left of right)-->	
+		
+		<div class="sidebar-section">	
+				<div class="col-md-3">
+					<div class="sidebar">
+						<div class="widget_area"><span class="widget_title">หมวดหมู่ (Categories)</span>		<ul>
+	<li class="cat-item cat-item-75"><a href="http://www.patanasongsivilai.com/blog/category/javascript/">Javascript</a> (1)
+</li>
+	<li class="cat-item cat-item-87"><a href="http://www.patanasongsivilai.com/blog/category/aimachine-learning/">AI/Machine Learning</a> (8)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b9%84%e0%b8%ad%e0%b8%97%e0%b8%b5/" title="ซอฟแวร์ แกคือเพื่อนฉัน มองมันทุกวัน ใจฉันสั่นระทวย">ไอที</a> (37)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b9%80%e0%b8%a7%e0%b9%87%e0%b8%9a%e0%b9%84%e0%b8%8b%e0%b8%95%e0%b9%8c/" title="สร้างเว็บ ด้วย WordPress-เวิร์ดเพลส พิมพ์เป็นคำ ทำเป็นเว็บ เสร็จสรรพดั่งหมาย ทำขายก็ได้เงิน">เว็บไซต์</a> (5)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b8%82%e0%b8%ad%e0%b8%87%e0%b8%ad%e0%b8%ad%e0%b8%99%e0%b9%84%e0%b8%a5%e0%b8%99%e0%b9%8c/" title="ขายของออนไลน์ ไม่ไกลจากฝัน เริ่มต้นดันด้น แม้เดินแบบเต่า เศร้าใจทำไม ไม่นานเกินรอ ก็กลายเป็นกบ กู่ร้องอ๊บ อ็บ ก้าวกระโกด โลดเล่นให้แลดู">ขายของออนไลน์</a> (23)
+</li>
+	<li class="cat-item cat-item-61"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/">อื่น ๆ</a> (63)
+<ul class="children">
+	<li class="cat-item cat-item-53"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/thailand/" title="smileland welcome to thailand">Thailand</a> (1)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b9%84%e0%b8%97%e0%b8%a2/" title="ไทยแลนด์ แดนเมืองยิ้ม">ไทย</a> (4)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b8%82%e0%b8%b2%e0%b8%a2%e0%b8%82%e0%b8%ad%e0%b8%87/" title="อาหารเสริม">ขายของ</a> (2)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b8%9e%e0%b8%b8%e0%b8%97%e0%b8%98%e0%b8%9b%e0%b8%a3%e0%b8%b1%e0%b8%8a%e0%b8%8d%e0%b8%b2/" title="พุทธศาสนา และปรัชญา นำมาซึ่งความสุข ทุกข์ใดให้วาง ทางสว่างอยู่ที่ตน">พุทธปรัชญา</a> (12)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b8%aa%e0%b8%b8%e0%b8%82%e0%b8%a0%e0%b8%b2%e0%b8%9e/" title="สุขภาพดี พาชีวีมีสุข ทุกข์ไกลจากโรคา แต่ไร้ซึ่งคุณค่า ถ้าไม่ดูแล เทคแคร์กาย">สุขภาพ</a> (22)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b8%8a%e0%b8%b2%e0%b8%a2%e0%b8%ab%e0%b8%8d%e0%b8%b4%e0%b8%87/" title="ชายหญิง เหมือนหยินหยาง ฝ่ายหนึ่่งแข็ง ฝ่ายหนึ่งอ่อน ส่งเสริมเกื้อหนุน คู่บุญคู่บารมี">ชายหญิง</a> (4)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b9%80%e0%b8%9e%e0%b9%89%e0%b8%ad%e0%b9%80%e0%b8%88%e0%b9%89%e0%b8%ad/" title="เพ้อเจ้อ เรื่องของผม ชื่นชมผลงาน วาดฝันจินตนาการ ตามใจคำนึง">เพ้อเจ้อ</a> (7)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b9%80%e0%b8%87%e0%b8%b4%e0%b8%99%e0%b9%81%e0%b8%a5%e0%b8%b0%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%a5%e0%b8%87%e0%b8%97%e0%b8%b8%e0%b8%99/" title="การเงินและการลงทุน เรื่องใกล้ตัว ที่บ้านไม่พูด โรงเรียนไม่มีสอน มารู้อีกทีตอนทำงาน แต่ก็ยังไม่สายเกินแกง">เงินและการลงทุน</a> (10)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.patanasongsivilai.com/blog/category/%e0%b8%ad%e0%b8%b7%e0%b9%88%e0%b8%99-%e0%b9%86/%e0%b9%82%e0%b8%ab%e0%b8%a3%e0%b8%b2%e0%b8%a8%e0%b8%b2%e0%b8%aa%e0%b8%95%e0%b8%a3%e0%b9%8c/" title="โหราศาสตร์ที่รัก มักที่ชัง รังที่ชอบ ออกทีวีทุกครา เจอด่าระงม หลงโง่งมงาย อย่าเผลอลับหลัง หลังไมค์มาถาม อยากดูดวงชะตา บ้างเอ๋ย">โหราศาสตร์</a> (1)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.patanasongsivilai.com/blog/category/uncategorized/">Uncategorized</a> (2)
+</li>
+		</ul>
+</div>					
+					</div>
+				</div>
+			</div>  
+		</div>
+	</div>	
+</div></section>
+
+
+
+<footer class="section image footer-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="logo text-center wow slideInDown" style="visibility: visible; animation-name: slideInDown;">
+				<a href="http://www.patanasongsivilai.com/" title="Education One">
+					<h1>Education One</h1>
+				</a>
+				</div>
+
+				<div class="social-icons text-center">
+					<ul class="list-inline">
+										 																																										</ul>
+				</div>
+
+				<div class="copyright text-center">
+					<p>Copyright 2016. Your Theme All right Reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/form.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/bootstrap.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/jquery.smartmenus.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/owl.carousel.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/animatedModal.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/wow.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/script.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/comment-reply.min.js"></script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/new-tab.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var FB_WP=FB_WP||{};FB_WP.queue={_methods:[],flushed:false,add:function(fn){FB_WP.queue.flushed?fn():FB_WP.queue._methods.push(fn)},flush:function(){for(var fn;fn=FB_WP.queue._methods.shift();){fn()}FB_WP.queue.flushed=true}};window.fbAsyncInit=function(){FB.init({"xfbml":true,"appId":"678396962215712"});if(FB_WP && FB_WP.queue && FB_WP.queue.flush){FB_WP.queue.flush()}}
+/* ]]> */
+</script>
+<script type="text/javascript">(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="http:\/\/connect.facebook.net\/th_TH\/all.js";fjs.parentNode.insertBefore(js,fjs)}(document,"script","facebook-jssdk"));</script>
+<script type="text/javascript" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/wp-embed.min.js"></script>
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/lY4eZXm_YWu.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/lY4eZXm_YWu(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="ff6bd09fb9c34" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" src="./วิธีเขียนโค้ดดึงข้อมูลหุ้นไทย ด้วยภาษา Python (แจกโค้ดฟรี)_files/ping.html" style="display: none;"></iframe></div></div></div>
+
+
+
+</body></html>
