@@ -19,8 +19,8 @@ global nu qpar k mi gamma L k0e e
 
 k     = 1.380648e-23;   % Bolzmann constant [J/K]
 mi    = 1.672e-27;      % ion mass [kg]
-gamma = 7;              % heat coefficient ration [-]
-L     =  100;           % average length of particles ~ 2*pi*q [m]
+gamma = 7;              % heat coefficient ratio [-]
+L     =  10;           % average length of particles ~ 2*pi*q [m]
 k0e   = 2000;           % ?
 e     = 1.6e-19;        % fundamental charge [C]
 
@@ -34,6 +34,7 @@ x0 = [0.3,96,10];       % Initial guess [nt,Tt,Tu]
 fun = @TwoPoint;
 options = optimoptions('fsolve','Display','iter-detailed');
 x = fsolve(fun,x0,options);
+% x = fsolve(fun,x0);
 
 %% PRINT-OUT 
 temp1 = sprintf('Density at target               (nt): %.4fE20 m**-3',x(1));
@@ -53,3 +54,5 @@ function F = TwoPoint(x)
     F(2) = x(3)^(7/2) - x(2)^(7/2) - (7/2)*qpar*L/k0e;
     F(3) = qpar - gamma*(x(1)*1e20)*k*(x(2)*11604.519)*sqrt(2*k*(x(2)*11604.519)/mi);    
 end
+
+
