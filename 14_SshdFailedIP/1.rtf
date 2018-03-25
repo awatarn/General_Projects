@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14540\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs34 \cf0 long ConvoCoor(long Nx,long xith,long displacementx)\{\
+/*\
+     This function is used for computing a coordinate from a reference point queryxith\
+     with distance of displancements.\
+     Inputs:\
+     Nx = total number of grids\
+     xith = a reference coordinate (C-style, running from 0 to Nx-1)\
+     displacementx = displacement from xith (vector value)\
+     Output:\
+     queryxith = a queried coordinate\
+*/\
+     long queryxith;\
+     if((displacementx>(Nx-1)) || (displacementx<(1-Nx)))\{\
+       printf("\\n\\tSys> ConvoCoor errors: xith is out of bound.\\n");\
+       printf("\\t     The program is terminating.\\n\\n");\
+       queryxith = -9999999999999;\
+       return queryxith;\
+     \}\
+     queryxith = xith + displacementx;\
+     if(queryxith<0) queryxith = queryxith + Nx;\
+     else if(queryxith>=Nx) queryxith = queryxith - Nx;\
+     return queryxith;\
+\}\
+\
+  j=ConvoCoor(Nx,5,29);\
+  printf("j = %ld\\n",j);\
+\
+\
+long HalfWidthConvoMatrix = 8; // Half width of the convolution matrix. It cannot be larger than ACTUALSIZEOFCONVOLUTIONMATRIX/2.\
+  double Convo[ACTUALSIZEOFCONVOLUTIONMATRIX][ACTUALSIZEOFCONVOLUTIONMATRIX] = \{\
+\
+\
+  for(i=0;i<Nx;i++)\{\
+          mua[i] = malloc(Nx * sizeof *mua[i]);\
+          mub[i] = malloc(Nx * sizeof *mub[i]);\
+          muc[i] = malloc(Nx * sizeof *muc[i]);\
+          Tfa[i] = malloc(Nx * sizeof *Tfa[i]);\
+          Tfb[i] = malloc(Nx * sizeof *Tfb[i]);\
+          muBara[i] = malloc(Nx * sizeof *muBara[i]);\
+          muTilde[i] = malloc(Nx * sizeof *muTilde[i]);\
+          muMTCa[i] = malloc(Nx * sizeof *muMTCa[i]);\
+          muMTCb[i] = malloc(Nx * sizeof *muMTCb[i]);\
+          muMTCBara[i] = malloc(Nx * sizeof *muMTCBara[i]);\
+          CoeffC[i] = malloc(Nx * sizeof *CoeffC[i]);\
+          HX[i] = malloc(Nx * sizeof *HX[i]);\
+          HY[i] = malloc(Nx * sizeof *HY[i]);\
+          MeanCoeffC[i] = malloc(Nx * sizeof *MeanCoeffC[i]);\
+          muMCTi[i] = malloc(Nx * sizeof *muMCTi[i]);\
+          mui[i] = malloc(Nx * sizeof *mui[i]);\
+  \}}
