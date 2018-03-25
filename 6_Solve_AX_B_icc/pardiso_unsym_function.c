@@ -13,7 +13,7 @@
 * is granted to  or  conferred  upon  you,  either   expressly,  by implication,
 * inducement,  estoppel  or  otherwise.  Any  license   under such  intellectual
 * property rights must be express and approved by Intel in writing.
-*
+*=
 * Unless otherwise agreed by Intel in writing,  you may not remove or alter this
 * notice or  any  other  notice   embedded  in  Materials  by  Intel  or Intel's
 * suppliers or licensors in any way.
@@ -55,9 +55,10 @@ MKL_INT idum;         /* Integer dummy. */
 
 /* INTERNAL FUNCTIONS */
 void SetupPardiso();
-MKL_INT Unsym_Solver(MKL_INT *un, double *ua, int *uNa, MKL_INT *uia, MKL_INT *uNia,
+/*MKL_INT Unsym_Solver(MKL_INT *un, double *ua, int *uNa, MKL_INT *uia, MKL_INT *uNia,
                      MKL_INT *uja, MKL_INT *uNja, double *ub, int *uNb,
-                     double  *ux, int *uNx);
+                     double  *ux, int *uNx);*/
+MKL_INT Unsym_Solver(MKL_INT *un, double *ua, MKL_INT *uia, MKL_INT *uja, double *ub, double  *ux);
 
 MKL_INT main (void)
 {
@@ -91,7 +92,8 @@ MKL_INT main (void)
     }
     /* SOLVER */
     SetupPardiso();
-    Unsym_Solver(&n, &a[0], &Na, &ia[0], &Nia, &ja[0], &Nja, &b[0], &Nb, &x[0], &Nx);
+//    Unsym_Solver(&n, &a[0], &Na, &ia[0], &Nia, &ja[0], &Nja, &b[0], &Nb, &x[0], &Nx);
+    Unsym_Solver(&n, &a[0], &ia[0], &ja[0], &b[0], &x[0]);
     /* OUTPUT */
     printf("OUTPUT 1 x[i]: \n");
     for ( i = 0; i < n; i++ )
@@ -155,12 +157,13 @@ void SetupPardiso(){
                pt[i] = 0;
       }
       if(msglvl==1) printf("DONE\n");
-  }
+}
 
 
-MKL_INT Unsym_Solver(MKL_INT *un, double *ua, int *uNa, MKL_INT *uia, MKL_INT *uNia,
+/*MKL_INT Unsym_Solver(MKL_INT *un, double *ua, int *uNa, MKL_INT *uia, MKL_INT *uNia,
                      MKL_INT *uja, MKL_INT *uNja, double *ub, int *uNb,
-                     double  *ux, int *uNx){
+                     double  *ux, int *uNx){*/
+MKL_INT Unsym_Solver(MKL_INT *un, double *ua, MKL_INT *uia, MKL_INT *uja, double *ub, double  *ux){
 /* This function solves AX = B by Intel MKL Pardiso solver.
    Matrix A must be an unsymmetric matrix and each element must be given in CSR3 format.
    Prefix 'u' is meant for internal variables. The function is passed by reference.
