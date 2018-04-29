@@ -1,0 +1,17 @@
+ &tr
+   modelg=3
+   knameq='eqdata.HT6M'
+
+   RIPS    = 0.1D0
+   RIPE    = 0.1D0
+
+   DT=0.0001D0
+
+   nsmax=2
+   PA(2)=1.D0
+   PZ(2)=1.D0
+   pn=0.1D0,0.1D0
+   pns=0.001D0,0.001D0
+   pt=0.1D0,0.1D0,1.D-6,1.D-6
+   pts=0.001D0,0.001D0,1.D-6,1.D-6
+ &end
